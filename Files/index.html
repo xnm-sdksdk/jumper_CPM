@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!-- Componente de gestão de portais -->
+    <script src="https://unpkg.com/aframe-web-portals@1.0.1/dist/aframe-web-portals.umd.js"></script>
+    <!-- Componente de gestão de eventos -->
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
+    <title>Beginning Room (A-Frame)</title>
+  </head>
+  <body>
+    <a-scene>
+      <a-camera>
+        <!-- Representação visual do Cursor -->
+        <a-entity
+          cursor
+          position="0 0 -.5"
+          geometry="primitive: sphere; radius: 0.01"
+          material="color: #000000; shader: flat; opacity: 0.5"
+        ></a-entity>
+      </a-camera>
+
+      <a-assets>
+        <!-- Texturas -->
+        <img id="floorTexture" src="assets/First Room/floor.png" />
+        <img id="wallTexture" src="assets/First Room/wall.jpg" />
+      </a-assets>
+
+      <!-- Modificar Luz Padrão -->
+      <a-entity light="type: ambient; color: #CCC; intensity: 0.2"></a-entity>
+
+      <!-- Luz "spot" no centro da sala -->
+      <a-entity
+        light="type: spot; color: #FFF; penumbra: 1;"
+        position="0 4.090 0"
+        rotation="-90 0 0"
+      ></a-entity>
+
+      <!-- Chão -->
+      <a-plane
+        material="src:#floorTexture; repeat: 20 20"
+        height="10"
+        width="10"
+        position="0 0 0"
+        rotation="-90 0 0"
+        repeat="100 100"
+      ></a-plane>
+
+      <!-- Paredes -->
+      <a-plane
+        material="src:#wallTexture; repeat: 1 1"
+        side="back"
+        height="5"
+        width="10"
+        position="0 2.5 5"
+        rotation="0 0 0"
+      ></a-plane>
+      <a-plane
+        material="src:#wallTexture; repeat: 1 1"
+        height="5"
+        width="10"
+        position="-5 2.5 0"
+        rotation="0 90 0"
+      ></a-plane>
+      <a-plane
+        material="src:#wallTexture; repeat: 1 1"
+        height="5"
+        width="10"
+        position="5 2.5 0"
+        rotation="0 -90 0"
+      ></a-plane>
+      <a-plane
+        material="src:#wallTexture; repeat: 1 1"
+        height="5"
+        width="10"
+        position="0 2.5 -5"
+        rotation="0 0 0"
+      ></a-plane>
+
+      <!-- Teto -->
+      <a-plane
+        src="#wallTexture"
+        height="10"
+        width="10"
+        position="0 5 0"
+        rotation="90 0 0"
+      ></a-plane>
+
+      <!-- Portals -->
+      <a-entity
+        id="portal1"
+        position="0 0 -4.920"
+        web-portal="url:snow.html; text:Snow;"
+      ></a-entity>
+
+      <a-entity
+        id="portal2"
+        position="0 0 4.920"
+        rotation="0 180 0"
+        web-portal="url:desert.html; text:Desert;"
+      ></a-entity>
+
+      <a-entity
+        id="portal3"
+        position="-4.920 0 0"
+        rotation="0 90 0"
+        web-portal="url:port.html; text:Port;"
+      ></a-entity>
+
+      <a-entity
+        id="portal4"
+        position="4.920 0 0"
+        rotation="0 270 0"
+        web-portal="url:https://aframe.io/; text:Island;"
+      ></a-entity>
+
+      <!-- Portas -->
+
+      <!-- First Door -->
+      <a-box
+        id="door1"
+        color="#504e4e"
+        scale="1.5 2.5 0.3"
+        position="0 1.161 -4.738"
+        event-set__mouseenter="color: #c4c4c4"
+        event-set__mouseleave="color: #504e4e"
+        event-set__Open="_event: click; rotation: 0 90 0; position: -0.925 1.161 -4.223"
+      ></a-box>
+
+      <!-- Second Door -->
+      <a-box
+        id="door2"
+        color="#504e4e"
+        scale="1.5 2.5 0.3"
+        position="0 1.161 4.738"
+        event-set__mouseenter="color: #c4c4c4"
+        event-set__mouseleave="color: #504e4e"
+        event-set__open="_event: click; rotation: 0 90 0; position: 0.925 1.161 4.223"
+        rotation="0 0 0"
+      ></a-box>
+
+      <!-- Third Door -->
+      <a-box
+        id="door3"
+        color="#504e4e"
+        scale="1.5 2.5 0.3"
+        position="4.738 1.161 0"
+        event-set__mouseenter="color: #c4c4c4"
+        event-set__mouseleave="color: #504e4e"
+        event-set__open="_event: click; rotation: 0 180 0; position: 4.738 1.161 -0.925"
+        rotation="0 90 0"
+      ></a-box>
+
+      <!-- Fourth Door -->
+      <a-box
+        id="door3"
+        color="#504e4e"
+        scale="1.5 2.5 0.3"
+        position="-4.738 1.161 0"
+        event-set__mouseenter="color: #c4c4c4"
+        event-set__mouseleave="color: #504e4e"
+        event-set__open="_event: click; rotation: 0 180 0; position: -4.738 1.161 0.925"
+        rotation="0 90 0"
+      ></a-box>
+    </a-scene>
+  </body>
+</html>

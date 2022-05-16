@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <title>Snow Area</title>
+  </head>
+  <body>
+    <a-scene>
+      <a-camera>
+        <!-- Representação visual do Cursor -->
+        <a-entity
+          cursor
+          position="0 0 -1"
+          geometry="primitive: sphere; radius: 0.015"
+          material="color: #000000; shader: flat; opacity: 0.5"
+        ></a-entity>
+      </a-camera>
+
+      <!-- Carregar ficheiros -->
+      <a-assets>
+        <!-- Texturas -->
+        <img src="assets/Snow Area/snow 1.jpg" id="floorTexture" />
+        <img src="assets/Snow Area/sky.jpg" id="sky" />
+
+        <!-- Modelos -->
+        <!-- Retirados de https://creazilla.com/pt/nodes/5114-kit-casa-de-natal-3d-modelo -->
+
+        <!-- Montanha -->
+        <a-asset-item
+          id="mountain"
+          src="assets/Snow Area/montanhas/Mountain_01.gltf"
+        ></a-asset-item>
+
+        <!-- Árvores -->
+        <a-asset-item
+          id="tree1"
+          src="assets/Snow Area/arvores/treePineSnow.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="tree2"
+          src="assets/Snow Area/arvores/treePineSnowRound.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="christmasTree"
+          src="assets/Snow Area/arvores/treeDecorated.glb"
+        ></a-asset-item>
+
+        <!-- Presentes -->
+        <a-asset-item
+          id="gift1"
+          src="assets/Snow Area/presentes/present.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="gift2"
+          src="assets/Snow Area/presentes/presentLow.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="gift3"
+          src="assets/Snow Area/presentes/presentRound.glb"
+        ></a-asset-item>
+
+        <!-- Casa -->
+        <a-asset-item
+          id="houseDoor"
+          src="assets/Snow Area/casa/cabinDoor.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="houseWindow"
+          src="assets/Snow Area/casa/cabinWindow.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="houseWall"
+          src="assets/Snow Area/casa/cabinWall.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="houseWallHalf"
+          src="assets/Snow Area/casa/cabinWallHalf.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="houseFloor"
+          src="assets/Snow Area/casa/cabinFloor.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="houseCorner"
+          src="assets/Snow Area/casa/cabinCorner.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="houseRoofCorner"
+          src="assets/Snow Area/casa/cabinRoofCorner.glb"
+        ></a-asset-item>
+
+        <!-- Poste de Luz -->
+        <a-asset-item
+          id="lightPost"
+          src="assets/Snow Area/Poste de Luz/lightpost.glb"
+        ></a-asset-item>
+
+        <!-- Cadeira/Banco -->
+        <a-asset-item
+          id="chair"
+          src="assets/Snow Area/cadeira/bench.glb"
+        ></a-asset-item>
+
+        <!-- Candies (decoração) -->
+        <a-asset-item
+          id="candy1"
+          src="assets/Snow Area/candy/candyCane.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="candy2"
+          src="assets/Snow Area/candy/candyCaneMint.glb"
+        ></a-asset-item>
+
+        <!-- Bonecos de Neve -->
+        <a-asset-item
+          id="snowMan1"
+          src="assets/Snow Area/Bonecos de Neve/snowman.glb"
+        ></a-asset-item>
+        <a-asset-item
+          id="snowMan2"
+          src="assets/Snow Area/Bonecos de Neve/snowmanFancy.glb"
+        ></a-asset-item>
+
+        <!-- Trenó -->
+        <a-asset-item
+          id="sled"
+          src="assets/Snow Area/Trenó/sled.glb"
+        ></a-asset-item>
+      </a-assets>
+
+      <a-sky src="#sky"></a-sky>
+
+      <!-- Modificar Luz Padrão -->
+      <a-entity light="type: ambient; color: #CCC; intensity: 0.1"></a-entity>
+
+      <!-- Luz de Cima -->
+      <a-entity
+        id="topLight"
+        light="type: spot; color: #c2fbff; intensity:1.3"
+        position="0 33.719 0"
+        rotation="270 0 0"
+      ></a-entity>
+
+      <!-- Chão -->
+      <a-plane
+        id="floor"
+        material="src:#floorTexture; repeat: 1 1"
+        height="30"
+        width="50"
+        position="0 0 0"
+        rotation="-90 0 0"
+        repeat="100 100"
+      ></a-plane>
+
+      <!-- Montanhas -->
+      <a-entity
+        id="mountain1"
+        gltf-model="#mountain"
+        position="21.04 -3.920 -12.282"
+        rotation="0 -40.45 0"
+        scale="2 2 2"
+      ></a-entity>
+
+      <a-entity
+        id="mountain2"
+        gltf-model="#mountain"
+        position="22.234 -3.330 -5.922"
+        rotation="0 100 0"
+        scale="2 1.5 2"
+      ></a-entity>
+
+      <a-entity
+        id="mountain3"
+        gltf-model="#mountain"
+        position="22.498 -3.330 5.640"
+        rotation="0 100 0"
+        scale="2 2.3 2"
+      ></a-entity>
+
+      <a-entity
+        id="mountain4"
+        gltf-model="#mountain"
+        position="19.196 -3.920 13.507"
+        rotation="0 200 0"
+        scale="2 2 2"
+      ></a-entity>
+
+      <a-entity
+        id="mountain5"
+        gltf-model="#mountain"
+        position="10.1 -3.330 14.297"
+        rotation="0 0 0"
+        scale="2 1.5 2"
+      ></a-entity>
+
+      <a-entity
+        id="mountain6"
+        gltf-model="#mountain"
+        position="-2.093 -3.330 14.049"
+        rotation="0 0 0"
+        scale="2 2.3 2"
+      ></a-entity>
+
+      <a-entity
+        id="mountain7"
+        gltf-model="#mountain"
+        position="-12.140 -2.594 12.634"
+        rotation="0 0 0"
+        scale="2 2 2"
+      ></a-entity>
+
+      <a-entity
+        id="mountain8"
+        gltf-model="#mountain"
+        position="-19.379 -3.203 8.520"
+        rotation="0 135 0"
+        scale="2 1.5 2"
+      ></a-entity>
+
+      <a-entity
+        id="mountain9"
+        gltf-model="#mountain"
+        position="-22.063 -3.330 -1.736"
+        rotation="0 280 0"
+        scale="2 2.3 2"
+      ></a-entity>
+
+      <a-entity
+        id="mountain10"
+        gltf-model="#mountain"
+        position="-18.022 -3.924 -10.571"
+        rotation="0 30 0"
+        scale="2 2.1 2"
+      ></a-entity>
+
+      <a-entity
+        id="mountain11"
+        gltf-model="#mountain"
+        position="-8.162 -3.203 -12.970"
+        rotation="0 0 0"
+        scale="2 1.5 2"
+      ></a-entity>
+
+      <a-entity
+        id="mountain12"
+        gltf-model="#mountain"
+        position="1.566 -3.920 -13.731"
+        rotation="0 1280 0"
+        scale="2 2 2"
+      ></a-entity>
+
+      <a-entity
+        id="mountain13"
+        gltf-model="#mountain"
+        position="12.311 -2.593 -13.522"
+        rotation="0 182.000 0"
+        scale="2.2 2 2"
+      ></a-entity>
+
+      <!-- Árvores -->
+      <a-entity
+        id="tree1"
+        gltf-model="#tree2"
+        position="15.279 0 -7.528"
+        rotation="0 0 0"
+        scale="5 5.5 5"
+      ></a-entity>
+
+      <a-entity
+        id="tree2"
+        gltf-model="#tree2"
+        position="15.993 0 -3.219"
+        rotation="0 0 0"
+        scale="5 6 5"
+      ></a-entity>
+
+      <a-entity
+        id="tree3"
+        gltf-model="#tree1"
+        position="13.410 0 -0.049"
+        rotation="0 0 0"
+        scale="5 4 5"
+      ></a-entity>
+
+      <a-entity
+        id="tree4"
+        gltf-model="#tree1"
+        position="12.217 0 4.163"
+        rotation="0 0 0"
+        scale="5 5 5"
+      ></a-entity>
+
+      <a-entity
+        id="tree5"
+        gltf-model="#tree2"
+        position="17.037 0 4.735"
+        rotation="0 0 0"
+        scale="5 7 5"
+      ></a-entity>
+
+      <a-entity
+        id="tree6"
+        gltf-model="#tree2"
+        position="13.750 0 8.618"
+        rotation="0 0 0"
+        scale="5 5 5"
+      ></a-entity>
+
+      <a-entity
+        id="tree7"
+        gltf-model="#tree1"
+        position="10.346 0 -4.545"
+        rotation="0 0 0"
+        scale="5 4.5 5"
+      ></a-entity>
+
+      <a-entity
+        id="tree8"
+        gltf-model="#tree2"
+        position="0.947 0 -8.118"
+        rotation="0 0 0"
+        scale="5 5.5 5"
+      ></a-entity>
+
+      <a-entity
+        id="tree9"
+        gltf-model="#tree1"
+        position="8.548 0 7.909"
+        rotation="0 0 0"
+        scale="5 5.5 5"
+      ></a-entity>
+
+      <a-entity
+        id="tree10"
+        gltf-model="#tree1"
+        position="7.197 0 -8.235"
+        rotation="0 0 0"
+        scale="5 5.5 5"
+      ></a-entity>
+
+      <a-entity
+        id="tree11"
+        gltf-model="#tree2"
+        position="3.222 0 9.015"
+        rotation="0 0 0"
+        scale="5 5.5 5"
+      ></a-entity>
+
+      <!-- Árvore de Natal -->
+      <a-entity
+        id="christmasTree"
+        gltf-model="#christmasTree"
+        position="6.647 0 0"
+        rotation="0 90 0"
+        scale="7 7 7"
+      ></a-entity>
+      <!-- Luz da Árvore de Natal-->
+      <a-entity
+        id="christmasTreeLight"
+        light="type: spot; color: #fbff00; groundColor: #ffa200; intensity:2; angle: 19"
+        position="6.504 12.823 0"
+        rotation="270 0 0"
+      ></a-entity>
+
+      <!-- Presentes -->
+      <a-entity
+        id="gift1"
+        gltf-model="#gift1"
+        position="4.006 0 -2.151"
+        rotation="0 10 0"
+        scale="2 2 2"
+      ></a-entity>
+
+      <a-entity
+        id="gift2"
+        gltf-model="#gift2"
+        position="4.84418 0 -0.62966"
+        rotation="0 59.99999999999999 0"
+        scale="2 2 2"
+      ></a-entity>
+
+      <a-entity
+        id="gift3"
+        gltf-model="#gift3"
+        position="5.44353 0 1.30109"
+        rotation="0 10 0"
+        scale="2 2 2"
+      ></a-entity>
+
+      <a-entity
+        id="gift4"
+        gltf-model="#gift1"
+        position="3.91692 0 0.92685"
+        rotation="0 10 0"
+        scale="2 1 2"
+      ></a-entity>
+
+      <a-entity
+        id="gift5"
+        gltf-model="#gift2"
+        position="4.34723 0 2.74525"
+        rotation="0 160 0"
+        scale="2 2 2"
+      ></a-entity>
+
+      <a-entity
+        id="gift6"
+        gltf-model="#gift3"
+        position="3.1586 0 -0.58579"
+        rotation="0 10 0"
+        scale="2 1.5 2"
+      ></a-entity>
+
+      <a-entity
+        id="gift7"
+        gltf-model="#gift2"
+        position="5.97045 0 -1.8882"
+        rotation="0 360 0"
+        scale="1 2 2"
+      ></a-entity>
+
+      <a-entity
+        id="gift8"
+        gltf-model="#gift3"
+        position="5.94737 0 2.56874"
+        rotation="0 10 0"
+        scale="2 2.5 2"
+      ></a-entity>
+
+      <!-- Casa -->
+      <a-entity
+        id="houseFloor"
+        gltf-model="#houseFloor"
+        position="-15.054 0 7.240"
+        rotation=""
+        scale="7 1 14"
+      ></a-entity>
+
+      <a-entity
+        id="houseDoor"
+        gltf-model="#houseDoor"
+        position="-8.07984 0 2.67851"
+        rotation="0 90 0"
+        scale="5 5 5"
+      ></a-entity>
+
+      <a-entity
+        id="houseWindow1"
+        gltf-model="#houseWindow"
+        position="-8.08 0 6.9185"
+        rotation="0 90 0"
+        scale="5 5 5"
+      ></a-entity>
+
+      <a-entity
+        id="houseWindow2"
+        gltf-model="#houseWindow"
+        position="-8.08 0 -1.48241"
+        rotation="0 90 0"
+        scale="5 5 5"
+      ></a-entity>
+
+      <a-entity
+        id="corner1"
+        gltf-model="#houseCorner"
+        position="-8.13921 0 7.05033"
+        rotation="0 270 0"
+        scale="5 5 5"
+      ></a-entity>
+
+      <a-entity
+        id="corner2"
+        gltf-model="#houseCorner"
+        position="-15.042 0 7.05"
+        rotation="0 180 0"
+        scale="5 5 5"
+      ></a-entity>
+
+      <a-entity
+        id="corner3"
+        gltf-model="#houseCorner"
+        position="-15.042 0 -6.81"
+        rotation="0 90 0"
+        scale="5 5 5"
+      ></a-entity>
+
+      <a-entity
+        id="corner4"
+        gltf-model="#houseCorner"
+        position="-8.08 0 -6.81043"
+        rotation=""
+        scale="5 5 5"
+      ></a-entity>
+
+      <a-entity
+        id="wall1"
+        gltf-model="#houseWall"
+        position="-14.8687 0 -6.81884"
+        rotation="0 360 0"
+        scale="6.5 5 5"
+      ></a-entity>
+
+      <a-entity
+        id="wall2"
+        gltf-model="#houseWall"
+        position="-14.8687 0 7.0548"
+        rotation="0 360 0"
+        scale="6.5 5 5"
+      ></a-entity>
+
+      <a-entity
+        id="wall3"
+        gltf-model="#houseWall"
+        position="-15.03203 0 6.67961"
+        rotation="0 90 0"
+        scale="13.3 5 5"
+      ></a-entity>
+
+      <a-entity
+        id="roof1"
+        gltf-model="#houseRoofCorner"
+        position="-11.94948 5.08385 -0.39968"
+        rotation=""
+        scale="3.5 4 6.5"
+      ></a-entity>
+
+      <a-entity
+        id="roof2"
+        gltf-model="#houseRoofCorner"
+        position="-11.31421 5.08385 0.77912"
+        rotation="0 180 0"
+        scale="3.5 4 6.5"
+      ></a-entity>
+
+      <a-entity
+        id="roof3"
+        gltf-model="#houseRoofCorner"
+        position="-11.31289 5.08385 -0.41033"
+        rotation="0 270 0"
+        scale="6.5 4 3.5"
+      ></a-entity>
+
+      <a-entity
+        id="roof4"
+        gltf-model="#houseRoofCorner"
+        position="-11.94678 5.08385 0.78922"
+        rotation="0 90 0"
+        scale="6.5 4 3.5"
+      ></a-entity>
+
+      <!-- Postes de Luz -->
+      <a-entity
+        id="lightPost1"
+        gltf-model="#lightPost"
+        position="-3.44887 0 2.46763"
+        rotation="0 90 0"
+        scale="2 4 2"
+      ></a-entity>
+
+      <a-entity
+        id="lightPost2"
+        gltf-model="#lightPost"
+        position="-3.49344 0 -2.008"
+        rotation="0 90 0"
+        scale="2 4 2"
+      ></a-entity>
+
+      <!-- Bancos/Cadeiras -->
+      <a-entity
+        id="chair1"
+        gltf-model="#chair"
+        position="-7.14502 0 4.57488"
+        rotation="0 90 0"
+        scale="4 4 4"
+      ></a-entity>
+
+      <a-entity
+        id="chair2"
+        gltf-model="#chair"
+        position="-7.16819 0 -4.10096"
+        rotation="0 90 0"
+        scale="4 4 4"
+      ></a-entity>
+
+      <!-- Decoração (candy) -->
+      <a-entity
+        id="candy1"
+        gltf-model="#candy1"
+        position="-5.07303 0 2.17787"
+        rotation="0 90 0"
+        scale="6 6 6"
+      ></a-entity>
+
+      <a-entity
+        id="candy2"
+        gltf-model="#candy1"
+        position="-5.03642 0 -1.71015"
+        rotation="0 270 0"
+        scale="6 6 6"
+      ></a-entity>
+
+      <a-entity
+        id="candy3"
+        gltf-model="#candy2"
+        position="-7.02266 0 2.22118"
+        rotation="0 90 0"
+        scale="6 6 6"
+      ></a-entity>
+
+      <a-entity
+        id="candy4"
+        gltf-model="#candy2"
+        position="-7.02779 0 -1.73665"
+        rotation="0 270 0"
+        scale="6 6 6"
+      ></a-entity>
+
+      <!-- Bonecos de Neve + Trenó -->
+      <a-entity
+        id="snowMan1"
+        gltf-model="#snowMan1"
+        position="-4.24958 0 7.99153"
+        rotation="0 150 0"
+        scale="6 6 6"
+      ></a-entity>
+
+      <a-entity
+        id="snowMan2"
+        gltf-model="#snowMan2"
+        position="0.04704 0 7.78432"
+        rotation="0 200 0"
+        scale="6 6 6"
+      ></a-entity>
+
+      <a-entity
+        id="sled"
+        gltf-model="#sled"
+        position="-3.61352 0 -6.45287"
+        rotation="0 29.999999999999996 0"
+        scale="7 7 7"
+      ></a-entity>
+    </a-scene>
+  </body>
+</html>
