@@ -6,7 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js%22%3E"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
     <title>Jumper | Island</title>
 </head>
 
@@ -77,6 +78,9 @@
             <a-asset-item id="caranguejo" src="assets/Island/crab/scene.gltf"></a-asset-item>
 
         </a-assets>
+
+        <!--Criação do cursor-->
+        <a-entity cursor="rayOrigin:mouse"></a-entity>
 
         <!--sky-->
         <a-sky color="#4CC3D9" src="#sky"></a-sky>
@@ -156,13 +160,19 @@
             rotation="-90 2.23 0"></a-entity>
 
         <!--Baús do Tesouro-->
-        <a-entity id="tesouro1" gltf-model="#tesouro" scale="0.02 0.02 0.02" position="-8.42 0 6.7" rotation="0 -90 0" animation-mixer>
+        <a-entity id="tesouro1" gltf-model="#tesouro" scale="0.02 0.02 0.02" position="-8.42 0 6.7" rotation="0 -90 0"
+            animation-mixer="timeScale:0; loop: once"
+            animation__open="property:animation-mixer.timeScale;startEvents: click;to:1">
         </a-entity>
 
-        <a-entity id="tesouro2" gltf-model="#tesouro" scale="0.02 0.02 0.02" position="-5.64 0 -16.61" rotation="0 -60 0">
+        <a-entity id=" tesouro2" gltf-model="#tesouro" scale="0.02 0.02 0.02" position="-5.64 0 -16.61"
+            rotation="0 -60 0" animation-mixer="timeScale:0; loop: once"
+            animation__open="property:animation-mixer.timeScale;startEvents: click;to:1">
         </a-entity>
 
-        <a-entity id="tesouro3" gltf-model="#tesouro" scale="0.02 0.02 0.02" position="14.63 0 11.88" rotation="0 35 0">
+        <a-entity id="tesouro3" gltf-model="#tesouro" scale="0.02 0.02 0.02" position="14.63 0 11.88" rotation="0 35 0"
+            animation-mixer="timeScale:0; loop: once"
+            animation__open="property:animation-mixer.timeScale;startEvents: click;to:1">
         </a-entity>
 
         <!--Caranguejos-->
