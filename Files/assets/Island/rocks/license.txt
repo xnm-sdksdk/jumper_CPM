@@ -1,0 +1,11 @@
+Model Information:
+* title:	Stylized Rocks
+* source:	https://sketchfab.com/3d-models/stylized-rocks-e5fc4b1e630943d9a453d6b4bcd588b6
+* author:	MartynaGrek (https://sketchfab.com/MartynaGrek)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Stylized Rocks" (https://sketchfab.com/3d-models/stylized-rocks-e5fc4b1e630943d9a453d6b4bcd588b6) by MartynaGrek (https://sketchfab.com/MartynaGrek) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
