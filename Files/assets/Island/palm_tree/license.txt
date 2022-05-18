@@ -1,0 +1,11 @@
+Model Information:
+* title:	Palm Tree
+* source:	https://sketchfab.com/3d-models/palm-tree-58cd53de211e4a97b6172c43b82aafca
+* author:	Arvid Klint (https://sketchfab.com/arvidklint)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Palm Tree" (https://sketchfab.com/3d-models/palm-tree-58cd53de211e4a97b6172c43b82aafca) by Arvid Klint (https://sketchfab.com/arvidklint) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
