@@ -85,6 +85,15 @@
         <!--sky-->
         <a-sky color="#4CC3D9" src="#sky"></a-sky>
 
+        <!--Sistema de som-->
+        <a-sound id="sound1" src="assets/Island/island-sounds.mp3" autoplay="true" position="0 2 -24" sound="loop: true"></a-sound>
+
+        <a-sound id="sound2" src="assets/Island/island-sounds.mp3" autoplay="true" position="0 2 24" sound="loop: true"></a-sound>
+
+        <a-sound id="sound3" src="assets/Island/island-sounds.mp3" autoplay="true" position="-29 2 0" sound="loop: true"></a-sound>
+
+        <a-sound id="sound4" src="assets/Island/island-sounds.mp3" autoplay="true" position="29 2 0" sound="loop: true"></a-sound>
+
         <!--Oceano + ilha-->
         <a-plane id="ocean" material="repeat: 1 1; src: #ocean; transparent: true" height="30" width="50"
             position="-0.14 0 -2.7" rotation="-90 0 0" repeat="1000 1000" geometry="" scale="2 3.8 1">
@@ -162,17 +171,20 @@
         <!--Baús do Tesouro-->
         <a-entity id="tesouro1" gltf-model="#tesouro" scale="0.02 0.02 0.02" position="-8.42 0 6.7" rotation="0 -90 0"
             animation-mixer="timeScale:0; loop: once"
-            animation__open="property:animation-mixer.timeScale;startEvents: click;to:1">
+            animation__open="property:animation-mixer.timeScale;startEvents: click;to:1"
+            animation__close="property:animation-mixer.timeScale;delay: 7000;startEvents:click;to:0">
         </a-entity>
 
         <a-entity id=" tesouro2" gltf-model="#tesouro" scale="0.02 0.02 0.02" position="-5.64 0 -16.61"
             rotation="0 -60 0" animation-mixer="timeScale:0; loop: once"
-            animation__open="property:animation-mixer.timeScale;startEvents: click;to:1">
+            animation__open="property:animation-mixer.timeScale;startEvents: click;to:1"
+            animation__close="property:animation-mixer.timeScale;delay: 7000;startEvents:click;to:0">
         </a-entity>
 
         <a-entity id="tesouro3" gltf-model="#tesouro" scale="0.02 0.02 0.02" position="14.63 0 11.88" rotation="0 35 0"
             animation-mixer="timeScale:0; loop: once"
-            animation__open="property:animation-mixer.timeScale;startEvents: click;to:1">
+            animation__open="property:animation-mixer.timeScale;startEvents: click;to:1"
+            animation__close="property:animation-mixer.timeScale;delay: 7000;startEvents:click;to:0">
         </a-entity>
 
         <!--Caranguejos-->
