@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!-- Componente de gestão de portais -->
+    <script src="https://unpkg.com/aframe-web-portals@1.0.1/dist/aframe-web-portals.umd.js"></script>
+    <!-- Componente para animação de gltf -->
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
+    <title>Inside the Pyramid</title>
+  </head>
+  <body>
+    <a-scene>
+      <a-camera position="-55 8 50">
+        <!-- Representação visual do Cursor -->
+        <a-entity
+          cursor
+          position="0 0 -.5"
+          geometry="primitive: sphere; radius: 0.01"
+          material="color: #000000; shader: flat; opacity: 0.5"
+        ></a-entity>
+      </a-camera>
+
+      <a-assets>
+        <!-- This work is based on "Desert Dungeon" (https://sketchfab.com/3d-models/desert-dungeon-caec2087d3b542adb318f9f187f56f43) by C. Anastasiadis (https://sketchfab.com/bagatir) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/) -->
+        <a-asset-item
+          id="dungeonModel"
+          src="assets/Desert/Inside Pyramid/dungeon/scene.gltf"
+        ></a-asset-item>
+
+        <!-- This work is based on "Torch" (https://sketchfab.com/3d-models/torch-a3b8085436d14977a69f965859d96575) by DJMaesen (https://sketchfab.com/bumstrum) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/) -->
+        <a-asset-item
+          id="torchModel"
+          src="assets/Desert/Inside Pyramid/torch/scene.gltf"
+        ></a-asset-item>
+
+        <!-- This work is based on "Remains" (https://sketchfab.com/3d-models/remains-7663ab71893f44b2b6466db3c625b061) by seenoise (https://sketchfab.com/seenoise) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/) -->
+        <a-asset-item
+          id="remainsModel"
+          src="assets/Desert/Inside Pyramid/remains/scene.gltf"
+        ></a-asset-item>
+
+        <!-- This work is based on "Dance like an Egyptian" (https://sketchfab.com/3d-models/dance-like-an-egyptian-cb32545d75904bfc9de3bd65f169df8a) by Miguelangelo Rosario (https://sketchfab.com/miguelangelo2k) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/) -->
+        <a-asset-item
+          id="dancerModel"
+          src="assets/Desert/Inside pyramid/dancer/scene.gltf"
+        ></a-asset-item>
+
+        <!-- This work is based on "Walk like an Egyptian" (https://sketchfab.com/3d-models/walk-like-an-egyptian-f9febd7c977b4eaca6ded635aaa7a593) by justin.johnstone (https://sketchfab.com/justin.johnstone) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/) -->
+        <a-asset-item
+          id="animatedWorldModel"
+          src="assets/Desert/Inside pyramid/animated world/scene.gltf"
+        ></a-asset-item>
+
+        <!-- This work is based on "Coffin of Ankh-Khonsu" (https://sketchfab.com/3d-models/coffin-of-ankh-khonsu-6132b52aa5904b1dbdd631235fc52c66) by Harvard Museum of the Ancient Near East (https://sketchfab.com/hmane) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/) -->
+        <a-asset-item
+          id="coffinModel"
+          src="assets/Desert/Inside pyramid/coffin/scene.gltf"
+        ></a-asset-item>
+
+        <!-- This work is based on "Skull" (https://sketchfab.com/3d-models/skull-a1c936d72a9f4fa0ac15033339bd6efe) by soidev (https://sketchfab.com/soidev) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/) -->
+        <a-asset-item
+          id="animatedSkullModel"
+          src="assets/Desert/Inside pyramid/animated skull/scene.gltf"
+        ></a-asset-item>
+
+        <!-- This work is based on "Golden Pharaoh" (https://sketchfab.com/3d-models/golden-pharaoh-f7a00bcea5c0408a93a6dbc886405e44) by vKrieger (https://sketchfab.com/vKrieger) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/) -->
+        <a-asset-item
+          id="egyptThanosModel"
+          src="assets/Desert/Inside Pyramid/egypt thanos/scene.gltf"
+        ></a-asset-item>
+      </a-assets>
+
+      <!-- Modificar Luz Padrão -->
+      <a-entity light="type: ambient; color: #CCC; intensity: 0"></a-entity>
+
+      <a-entity
+        id="dungeon"
+        gltf-model="#dungeonModel"
+        scale="0.05 0.05 0.05"
+        position="74.859 0 -16.586"
+      ></a-entity>
+
+      <a-entity
+        id="dungeon2"
+        gltf-model="#dungeonModel"
+        scale="0.05 0.05 0.05"
+        position="-64.43292 26.327 123.57066"
+        rotation="-180 270 0"
+      ></a-entity>
+
+      <!-- Tochas -->
+      <a-entity
+        id="torch1"
+        position="-12.829 10.784 -18.783"
+        gltf-model="#torchModel"
+        scale="7 7 7a"
+        light="color:  #b36f0f;  type:  point; intensity: 0.600"
+      ></a-entity>
+
+      <a-entity
+        id="torch2"
+        position="12.486 10.784 -18.783"
+        gltf-model="#torchModel"
+        scale="7 7 7a"
+        light="color:  #b36f0f;  type:  point; intensity: 0.600"
+      ></a-entity>
+
+      <a-entity
+        id="torch3"
+        position="25.397 10.784 84.890"
+        rotation="0 180 0"
+        gltf-model="#torchModel"
+        scale="7 7 7a"
+        light="color:  #b36f0f;  type:  point; intensity: 0.600"
+      ></a-entity>
+
+      <a-entity
+        id="torch4"
+        position="-22.449sd 10.784 84.890"
+        rotation="0 180 0"
+        gltf-model="#torchModel"
+        scale="7 7 7a"
+        light="color:  #b36f0f;  type:  point; intensity: 0.600"
+      ></a-entity>
+
+      <!-- Esqueletos -->
+      <a-entity
+        id="remains1"
+        position="50.099 0 0"
+        rotation="0 0 0"
+        gltf-model="#remainsModel"
+        scale="5 5 5"
+      ></a-entity>
+
+      <a-entity
+        id="remains2"
+        position="-38.42472 0 21.33876"
+        rotation="0 150 0"
+        gltf-model="#remainsModel"
+        scale="3 3 3"
+      ></a-entity>
+
+      <a-entity
+        id="remains3"
+        position="43.46667 0 90.13663"
+        rotation="0 -90 0"
+        gltf-model="#remainsModel"
+        scale="7 7 7"
+      ></a-entity>
+
+      <!-- Dançarino -->
+      <a-entity
+        id="dancer"
+        position="0 0 46.083"
+        rotation="0 -90 0"
+        gltf-model="#dancerModel"
+        scale="5 5 5"
+        animation-mixer
+        light="color:  #fbff00;  type:  point; intensity: 0.3wd00"
+      ></a-entity>
+
+      <!-- Mundo em Movimento -->
+      <a-entity
+        id="animatedWorld"
+        position="59.424 10.086 49.430"
+        rotation="0 -90 0"
+        gltf-model="#animatedWorldModel"
+        scale="3 3 3"
+        animation-mixer
+      ></a-entity>
+
+      <!-- Sarcófago -->
+      <a-entity
+        id="coffin"
+        position="1.99312 0 119.40511"
+        rotation="0 180 0"
+        gltf-model="#coffinModel"
+        scale="0.2 0.22 0.2"
+        animation-mixer
+      >
+        ></a-entity
+      >
+
+      <!-- Caveiras dentro do Sarcófago -->
+      <a-entity
+        id="animatedSkull1"
+        position="1.82887 5.698 103.826"
+        rotation="-40 180 0"
+        gltf-model="#animatedSkullModel"
+        scale="3 3 3"
+        animation-mixer=""
+      ></a-entity>
+
+      <a-entity
+        id="animatedSkull2"
+        position="11.107 5.698 103.826"
+        rotation="-40 180 0"
+        gltf-model="#animatedSkullModel"
+        scale="3 3 3"
+        animation-mixer=""
+      ></a-entity>
+
+      <a-entity
+        id="animatedSkull3"
+        position="-7,44926 5.698 103.826"
+        rotation="-40 180 0"
+        gltf-model="#animatedSkullModel"
+        scale="3 3 3"
+        animation-mixer=""
+      ></a-entity>
+
+      <!-- Thanos do Egito -->
+      <a-entity
+        id="egyptThanos"
+        position="-42.19675 -0.0882 103"
+        rotation="0 180 0"
+        gltf-model="#egyptThanosModel"
+        scale="10 10 10"
+        animation-mixer=""
+      ></a-entity>
+
+      <!-- Portais -->
+
+      <a-entity
+        id="portal1"
+        position="-65.27136 12.770 48.539"
+        scale="15 10 2"
+        rotation="0 90 0"
+        web-portal="url:desert.html"
+      ></a-entity>
+    </a-scene>
+  </body>
+</html>

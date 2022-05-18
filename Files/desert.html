@@ -4,8 +4,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Desert</title>
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <!-- Componente de gestão de portais -->
+    <script src="https://unpkg.com/aframe-web-portals@1.0.1/dist/aframe-web-portals.umd.js"></script>
   </head>
   <body>
     <a-scene>
@@ -24,10 +25,6 @@
         <img id="sandFloorTexture" src="assets/Desert/BC.jpg" />
         <img id="skyTexture" src="assets/Desert/sky.jpg" />
         <img id="pyramidTexture" src="assets/Desert/pywall1.webp" />
-        <img
-          id="insideWallTexture"
-          src="assets/Desert/Inside Pyramid/Regular City Brick-043.jpg"
-        />
 
         <a-asset-item
           id="mamuteModel"
@@ -56,12 +53,6 @@
         <a-asset-item
           id="lionSkullModel"
           src="assets/Desert/Lion Skull/scene.gltf"
-        ></a-asset-item>
-
-        <!-- This work is based on "Desert Archway" (https://sketchfab.com/3d-models/desert-archway-fc351480d81f4f6bb289b16923e8ce7f) by Nick.Amalin (https://sketchfab.com/Nick.Amalin) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/) -->
-        <a-asset-item
-          id="archwayModel"
-          src="assets/Desert/Archway/scene.gltf"
         ></a-asset-item>
       </a-assets>
 
@@ -97,7 +88,7 @@
         rotation="-29.999999999999996 0 0"
       ></a-triangle>
 
-      <a-triangle
+      <!-- <a-triangle
         id="pyramideWall3"
         position="25 21.181 -37.255"
         rotation="-30 -180 0"
@@ -115,7 +106,7 @@
         scale="50 50 50"
         geometry=""
         rotation="-29.999999999999996 0 0"
-      ></a-triangle>
+      ></a-triangle> -->
 
       <!-- Fóssil do Mamute -->
       <a-entity
@@ -298,33 +289,14 @@
         rotation="0 -100 0"
       ></a-entity>
 
-      <!-- Archway -->
+      <!-- Portal -->
       <a-entity
-        id="archway1"
-        position="19.96964 3.86543 -3.559"
-        scale="4.5 4 10"
-        gltf-model="#archwayModel"
+        id="portal"
+        position="24.978 3.485 -2.164"
+        rotation="-30 0 0"
+        web-portal="url:pyramid.html"
+        scale="3 3 3"
       ></a-entity>
-      <a-entity
-        id="archway2"
-        position="19.96964 3.86543 -1.61406"
-        scale="4.5 4 10"
-        gltf-model="#archwayModel"
-      ></a-entity>
-      <a-entity
-        id="archway3"
-        position="19.96964 3.86543 0.39842"
-        scale="4.5 4 10"
-        gltf-model="#archwayModel"
-      ></a-entity>
-
-      <!-- Porta -->
-      <a-box
-        id="outsideDoor"
-        color="black"
-        scale="5 8 1"
-        position="19.93929 2.71466 0"
-      ></a-box>
     </a-scene>
   </body>
 </html>
