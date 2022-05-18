@@ -8,7 +8,7 @@
   </head>
   <body>
     <a-scene>
-      <a-camera position="0 1.6 0">
+      <a-camera position="-10 1.6 -10">
         <!-- Representação visual do Cursor -->
         <a-entity
           cursor
@@ -22,6 +22,36 @@
       <a-assets>
         <img id="sandFloorTexture" src="assets/Desert/BC.jpg" />
         <img id="skyTexture" src="assets/Desert/sky.jpg" />
+        <img id="pyramidTexture" src="assets/Desert/pywall1.webp" />
+
+        <a-asset-item
+          id="mamuteModel"
+          src="assets/Desert/mammuthus-primigenius-blumbach-3d-model/scene.gltf"
+        ></a-asset-item>
+
+        <!-- This work is based on "Tree" (https://sketchfab.com/3d-models/tree-c25e5fc2bfa54d24a165a8a207c0a6d7) by Epic_Tree_Store (https://sketchfab.com/johngreenstone) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/) -->
+        <a-asset-item
+          id="treeModel"
+          src="assets/Desert/tree/scene.gltf"
+        ></a-asset-item>
+
+        <!-- This work is based on "Desert | Rocks | Stones | Pack" (https://sketchfab.com/3d-models/desert-rocks-stones-pack-c2208f5ccc004f1681d27de67fe75799) by Erroratten (https://sketchfab.com/erroratten) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/) -->
+        <a-asset-item
+          id="rockModel"
+          src="assets/Desert/rocks/scene.gltf"
+        ></a-asset-item>
+
+        <!-- This work is based on "lost in the desert - Treasure Chest" (https://sketchfab.com/3d-models/lost-in-the-desert-treasure-chest-6bb78ee9ea1f4d4e82c855a903c95b67) by mohamed_e_5353 (https://sketchfab.com/mo_el_5353) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/) -->
+        <a-asset-item
+          id="chestModel"
+          src="assets/Desert/chest/scene.gltf"
+        ></a-asset-item>
+
+        <!-- This work is based on "Lion Skull" (https://sketchfab.com/3d-models/lion-skull-c2016a3161954a00be97929750d55174) by Auckland Museum (https://sketchfab.com/aucklandmuseum) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/) -->
+        <a-asset-item
+          id="lionSkullModel"
+          src="assets/Desert/Lion Skull/scene.gltf"
+        ></a-asset-item>
       </a-assets>
 
       <!-- Céu -->
@@ -35,6 +65,227 @@
         width="100"
         rotation="-90 0 0"
       ></a-plane>
+
+      <!-- Pirâmide -->
+      <a-triangle
+        id="pyramideWall1"
+        position="24.978 21.181 -12.497"
+        material="src: #pyramidTexture; repeat: 5 5"
+        scale="50 50 50"
+        geometry=""
+        rotation="-29.999999999999996 0 0"
+      ></a-triangle>
+
+      <a-triangle
+        id="pyramideWall2"
+        position="12.447 21.181 -24.890"
+        rotation="-30 -90 0"
+        material="src: #pyramidTexture; repeat: 5 5"
+        scale="50 50 50"
+        geometry=""
+        rotation="-29.999999999999996 0 0"
+      ></a-triangle>
+
+      <a-triangle
+        id="pyramideWall3"
+        position="25 21.181 -37.255"
+        rotation="-30 -180 0"
+        material="src: #pyramidTexture; repeat: 5 5"
+        scale="50 50 50"
+        geometry=""
+        rotation="-29.999999999999996 0 0"
+      ></a-triangle>
+
+      <a-triangle
+        id="pyramideWall4"
+        position="37.518 21.181 -24.821"
+        rotation="-30 -270 0"
+        material="src: #pyramidTexture; repeat: 5 5"
+        scale="50 50 50"
+        geometry=""
+        rotation="-29.999999999999996 0 0"
+      ></a-triangle>
+
+      <!-- Fóssil do Mamute -->
+      <a-entity
+        id="mamute"
+        gltf-model="#mamuteModel"
+        position="33.23848 -0.806 31.08661"
+        rotation="0 119.99999999999999 90"
+        scale="0.005 0.005 0.005"
+      ></a-entity>
+
+      <!-- Árvores -->
+      <a-entity
+        id="tree1"
+        position="-20.56079 2.482 -7.15763"
+        scale="1.5 2 1.5"
+        gltf-model="#treeModel"
+      ></a-entity>
+
+      <a-entity
+        id="tree2"
+        position="-30.61422 2.482 13.43669"
+        scale="1.5 2 1.5"
+        gltf-model="#treeModel"
+      ></a-entity>
+
+      <a-entity
+        id="tree3"
+        position="-7.31091 2.482 25.38396"
+        scale="1.5 2 1.5"
+        gltf-model="#treeModel"
+      ></a-entity>
+
+      <a-entity
+        id="tree4"
+        position="27.81083 2.482 5.54892"
+        scale="1.5 2 1.5"
+        gltf-model="#treeModel"
+      ></a-entity>
+
+      <a-entity
+        id="tree5"
+        position="43.40104 2.482 36.84525"
+        scale="1.5 2 1.5"
+        gltf-model="#treeModel"
+      ></a-entity>
+
+      <a-entity
+        id="tree6"
+        position="-9.6277 2.482 -42.83122"
+        scale="1.5 2 1.5"
+        gltf-model="#treeModel"
+      ></a-entity>
+
+      <a-entity
+        id="tree7"
+        position="-43.43098 2.482 32.15469"
+        scale="1.5 2 1.5"
+        gltf-model="#treeModel"
+      ></a-entity>
+
+      <a-entity
+        id="tree8"
+        position="-34.27439 2.482 -33.82396"
+        scale="1.5 2 1.5"
+        gltf-model="#treeModel"
+      ></a-entity>
+
+      <a-entity
+        id="tree9"
+        position="-45.11221 2.482 -13.85025"
+        scale="1.5 2 1.5"
+        gltf-model="#treeModel"
+      ></a-entity>
+
+      <a-entity
+        id="tree10"
+        position="-29.80948 2.482 -44.957"
+        scale="1.5 2 1.5"
+        gltf-model="#treeModel"
+      ></a-entity>
+
+      <a-entity
+        id="tree11"
+        position="0 2.482 -5.42315"
+        scale="1.5 2 1.5"
+        gltf-model="#treeModel"
+      ></a-entity>
+
+      <!-- Rochas -->
+      <a-entity
+        id="rock1"
+        position="53.22806 -3.34806 30.79072"
+        gltf-model="#rockModel"
+        rotation="0 180 0"
+      ></a-entity>
+
+      <a-entity
+        id="rock2"
+        position="42.64771 -5.71181 30.79072"
+        gltf-model="#rockModel"
+        rotation="0 180 0"
+      ></a-entity>
+
+      <a-entity
+        id="rock3"
+        position="13.5015 -3.34806 30.79072"
+        gltf-model="#rockModel"
+        rotation="0 180 0"
+      ></a-entity>
+
+      <a-entity
+        id="rock4"
+        position="-15.58435 -3.34806 50.07129"
+        gltf-model="#rockModel"
+        rotation="0 105.00000000000001 0"
+      ></a-entity>
+
+      <a-entity
+        id="rock5"
+        position="-23.04929 -3.34806 44.78585"
+        gltf-model="#rockModel"
+        rotation="0 100 0"
+      ></a-entity>
+
+      <a-entity
+        id="rock6"
+        position="-33.75955 -3.34806 13.1217"
+        gltf-model="#rockModel"
+        rotation="0 90 0"
+      ></a-entity>
+
+      <a-entity
+        id="rock7"
+        position="-33.83595 -3.34806 22.76472"
+        gltf-model="#rockModel"
+        rotation="0 90 0"
+      ></a-entity>
+
+      <a-entity
+        id="rock8"
+        position="-52.42073 -3.34806 -24.99583"
+        gltf-model="#rockModel"
+      ></a-entity>
+
+      <a-entity
+        id="rock9"
+        position="-43.44974 -3.34806 -28.33347"
+        gltf-model="#rockModel"
+      ></a-entity>
+
+      <a-entity
+        id="rock10"
+        position="30.095 -3.34806 -6.53783"
+        gltf-model="#rockModel"
+        rotation="0 270 0"
+      ></a-entity>
+
+      <a-entity
+        id="rock11"
+        position="29.96455 -3.34806 -15.55751"
+        gltf-model="#rockModel"
+        rotation="0 270 0"
+      ></a-entity>
+
+      <!-- Baú -->
+      <a-entity
+        id="chest1"
+        position="-17.46217 -1.3448 -11.02608"
+        scale="5 5 5"
+        gltf-model="#chestModel"
+        rotation="0 50 0"
+      ></a-entity>
+
+      <!-- Fóssil da cabeça de leão -->
+      <a-entity
+        id="lionHead"
+        position="-9.05593 0.68853 23.13563"
+        scale="0.01 0.01 0.01"
+        gltf-model="#lionSkullModel"
+        rotation="0 -100 0"
+      ></a-entity>
     </a-scene>
   </body>
 </html>
