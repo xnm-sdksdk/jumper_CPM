@@ -1,201 +1,461 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
     <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
     <title>Jumper | Island</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <a-scene>
+      <a-camera
+        camera=""
+        rotation="0 0 0"
+        look-controls="pointerLockEnabled: true"
+        data-aframe-inspector-original-camera=""
+      >
+        <!-- Representação visual do Cursor -->
+        <a-entity
+          cursor=""
+          position="0 0 -0.5"
+          w=""
+          geometry="primitive: sphere; radius: 0.01"
+          material="color: #000000; shader: flat; opacity: 0.5"
+          look-controls="pointerLockEnabled: true"
+          rotation="-16.844959176846206 14.094761760218251 0"
+        ></a-entity>
+      </a-camera>
 
-        <a-camera>
-            <!-- Representação visual do Cursor -->
-            <a-entity cursor position="0 0 -1" geometry="primitive: sphere; radius: 0.015"
-                material="color: #000000; shader: flat; opacity: 0.5"></a-entity>
-        </a-camera>
+      <a-assets>
+        <!-- Previews -->
+        <img id="firstRoomPreview" src="assets/First Room/first room.png" />
 
-        <a-assets>
+        <!--Oceano-->
+        <img id="ocean" src="assets/Island/blinn4_baseColor.png" />
 
-            <!--Oceano-->
-            <img id="ocean" src="assets/Island/blinn4_baseColor.png">
+        <!--Céu-->
+        <img id="sky" src="assets/Island/sky.jpg" />
 
-            <!--Céu-->
-            <img id="sky" src="assets/Island/sky.jpg">
-
-            <!--Modelos retirados de https://sketchfab.com-->
-
-            <!--Palmeiras-->
-            <!--https://sketchfab.com/3d-models/palm-tree-58cd53de211e4a97b6172c43b82aafca-->
-            <a-asset-item id="palm-tree" src="assets/Island/palm_tree/scene.gltf"></a-asset-item>
-
-            <!--Cadeira de praia-->
-            <!--https://sketchfab.com/3d-models/beach-chair-57e9477018d244378302070a8738b566-->
-            <a-asset-item id="cadeira" src="assets/Island/beach_chair/scene.gltf"></a-asset-item>
-
-            <!--Tenda com materiais-->
-            <a-asset-item id="tenda" src="assets/Island/craft_tent/scene.gltf"></a-asset-item>
-
-            <!--Pedras-->
-            <!--https://sketchfab.com/3d-models/stylized-rocks-e5fc4b1e630943d9a453d6b4bcd588b6-->
-            <a-asset-item id="pedras" src="assets/Island/rocks/scene.gltf"></a-asset-item>
-
-            <!--Barco Naufragado-->
-            <!--https://sketchfab.com/3d-models/shipwreck-low-poly-dc14bf79a89042b097f04ab83102e856-->
-            <a-asset-item id="barco" src="assets/Island/shipwreck/scene.gltf"></a-asset-item>
-
-            <!--Fogueira-->
-            <!--https://sketchfab.com/3d-models/pot-with-food-and-bonfire-lowpoly-abc82e73ce074545a6daa3c9bc111f8f#download-->
-            <a-asset-item id="fogueira" src="assets/Island/campfire/scene.gltf"></a-asset-item>
-
-            <!--Lenha-->
-            <!--https://sketchfab.com/3d-models/firewood-low-poly-4929d9f83c4c465792dcdc07fa342e57-->
-            <a-asset-item id="lenha" src="assets/Island/firewood/scene.gltf"></a-asset-item>
-
-            <!--Tesouro-->
-            <!--https://sketchfab.com/3d-models/treasure-chest-8e95e24a076d4cb39519defe71d3b18b-->
-            <a-asset-item id="tesouro" src="assets/Island/treasure_chest/scene.gltf"></a-asset-item>
-
-            <!--Coco-->
-            <!--https://sketchfab.com/3d-models/low-poly-coconut-game-ready-0213a71af3314ac0aaae25030d565d44-->
-            <a-asset-item id="cocos" src="assets/Island/coconut/scene.gltf"></a-asset-item>
-
-            <!--Barril de metal-->
-            <!--https://sketchfab.com/3d-models/barrel-205a7012c31742afb2b81d2cbfe0f2b2-->
-            <a-asset-item id="barris" src="assets/Island/barrel/scene.gltf"></a-asset-item>
-
-            <!--Barril de Madeira-->
-            <!--https://sketchfab.com/3d-models/wood-barrel-a53f6eb8dbde42e3939e033670a6b082-->
-            <a-asset-item id="barril_madeira" src="assets/Island/wooden_barrel/scene.gltf"></a-asset-item>
-
-            <!--Caranguejo-->
-            <!--https://sketchfab.com/3d-models/crab-claw-attack-dcf0e226564b4ec3b18dd5a93e6e8110-->
-            <a-asset-item id="caranguejo" src="assets/Island/crab/scene.gltf"></a-asset-item>
-
-        </a-assets>
-
-        <!--Criação do cursor-->
-        <a-entity cursor="rayOrigin:mouse"></a-entity>
-
-        <!--sky-->
-        <a-sky color="#4CC3D9" src="#sky"></a-sky>
-
-        <!--Sistema de som-->
-        <a-sound id="sound1" src="assets/Island/island-sounds.mp3" autoplay="true" position="0 2 -24" sound="loop: true"></a-sound>
-
-        <a-sound id="sound2" src="assets/Island/island-sounds.mp3" autoplay="true" position="0 2 24" sound="loop: true"></a-sound>
-
-        <a-sound id="sound3" src="assets/Island/island-sounds.mp3" autoplay="true" position="-29 2 0" sound="loop: true"></a-sound>
-
-        <a-sound id="sound4" src="assets/Island/island-sounds.mp3" autoplay="true" position="29 2 0" sound="loop: true"></a-sound>
-
-        <!--Oceano + ilha-->
-        <a-plane id="ocean" material="repeat: 1 1; src: #ocean; transparent: true" height="30" width="50"
-            position="-0.14 0 -2.7" rotation="-90 0 0" repeat="1000 1000" geometry="" scale="2 3.8 1">
-        </a-plane>
-
-        <!--Cadeiras-->
-        <a-entity id="cadeira1" gltf-model="#cadeira" rotation="0 -45 0" scale="0.15 0.15 0.15" position="-24.5 0 0">
-        </a-entity>
-
-        <a-entity id="cadeira2" gltf-model="#cadeira" rotation="0 -45 0" scale="0.15 0.15 0.15" position="-22.5 0 0.74">
-        </a-entity>
+        <!--Modelos retirados de https://sketchfab.com-->
 
         <!--Palmeiras-->
-        <a-entity id="palmeiras1" gltf-model="#palm-tree" position="17.5 0 3.5" rotation="0 15 0"></a-entity>
+        <!--https://sketchfab.com/3d-models/palm-tree-58cd53de211e4a97b6172c43b82aafca-->
+        <a-asset-item
+          id="palm-tree"
+          src="assets/Island/palm_tree/scene.gltf"
+        ></a-asset-item>
 
-        <a-entity id="palmeiras2" gltf-model="#palm-tree" position="-6.2 0 8.9" rotation="0 90 0"></a-entity>
+        <!--Cadeira de praia-->
+        <!--https://sketchfab.com/3d-models/beach-chair-57e9477018d244378302070a8738b566-->
+        <a-asset-item
+          id="cadeira"
+          src="assets/Island/beach_chair/scene.gltf"
+        ></a-asset-item>
 
-        <a-entity id="palmeiras3" gltf-model="#palm-tree" position="4.3 0 15.9" rotation="0 120 0"></a-entity>
-
-        <!--Tenda-->
-        <a-entity id="tenda" gltf-model="#tenda" rotation="0 96 0" position="6.5 0.1 8.8" scale="2 1.5 2.5"></a-entity>
+        <!--Tenda com materiais-->
+        <a-asset-item
+          id="tenda"
+          src="assets/Island/craft_tent/scene.gltf"
+        ></a-asset-item>
 
         <!--Pedras-->
-        <a-entity id="pedras1" gltf-model="#pedras" position="12.95 1.85 10.43" scale="3 3 3" rotation="0 90 0">
-        </a-entity>
+        <!--https://sketchfab.com/3d-models/stylized-rocks-e5fc4b1e630943d9a453d6b4bcd588b6-->
+        <a-asset-item
+          id="pedras"
+          src="assets/Island/rocks/scene.gltf"
+        ></a-asset-item>
 
-        <a-entity id="pedras2" gltf-model="#pedras" position="-1.9 1.8 6.8" scale="3 3 3" rotation="0 90 0"></a-entity>
-
-        <!--Barco-->
-        <a-entity id="barco" gltf-model="#barco" position="-9.5 -0.72 -15.2" rotation="0 -70 0" scale="2 2 2">
-        </a-entity>
+        <!--Barco Naufragado-->
+        <!--https://sketchfab.com/3d-models/shipwreck-low-poly-dc14bf79a89042b097f04ab83102e856-->
+        <a-asset-item
+          id="barco"
+          src="assets/Island/shipwreck/scene.gltf"
+        ></a-asset-item>
 
         <!--Fogueira-->
-        <a-entity id="fogueira" gltf-model="#fogueira" scale="2 1.2 1.5" position="13.2 1.09 -4.23" rotation="">
-        </a-entity>
+        <!--https://sketchfab.com/3d-models/pot-with-food-and-bonfire-lowpoly-abc82e73ce074545a6daa3c9bc111f8f#download-->
+        <a-asset-item
+          id="fogueira"
+          src="assets/Island/campfire/scene.gltf"
+        ></a-asset-item>
 
         <!--Lenha-->
-        <a-entity id="lenha1" gltf-model="#lenha" position="-8.8 0.63 11" scale="3 3 3" rotation="0 90 0"></a-entity>
+        <!--https://sketchfab.com/3d-models/firewood-low-poly-4929d9f83c4c465792dcdc07fa342e57-->
+        <a-asset-item
+          id="lenha"
+          src="assets/Island/firewood/scene.gltf"
+        ></a-asset-item>
 
-        <a-entity id="lenha2" gltf-model="#lenha" position="-8.8 0.63 13.5" scale="3 3 3" rotation="0 90 0"></a-entity>
+        <!--Tesouro-->
+        <!--https://sketchfab.com/3d-models/treasure-chest-8e95e24a076d4cb39519defe71d3b18b-->
+        <a-asset-item
+          id="tesouro"
+          src="assets/Island/treasure_chest/scene.gltf"
+        ></a-asset-item>
 
-        <!--Cocos-->
-        <a-entity id="coco1" gltf-model="#cocos" position="16.33 0.23 1.36" scale="0.5 0.5 0.5"></a-entity>
+        <!--Coco-->
+        <!--https://sketchfab.com/3d-models/low-poly-coconut-game-ready-0213a71af3314ac0aaae25030d565d44-->
+        <a-asset-item
+          id="cocos"
+          src="assets/Island/coconut/scene.gltf"
+        ></a-asset-item>
 
-        <a-entity id="coco2" gltf-model="#cocos" position="17.33 0.23 1.36" scale="0.5 0.5 0.5" rotation="-50 0 0">
-        </a-entity>
+        <!--Barril de metal-->
+        <!--https://sketchfab.com/3d-models/barrel-205a7012c31742afb2b81d2cbfe0f2b2-->
+        <a-asset-item
+          id="barris"
+          src="assets/Island/barrel/scene.gltf"
+        ></a-asset-item>
 
-        <a-entity id="coco3" gltf-model="#cocos" position="17.33 0.23 0.36" scale="0.5 0.5 0.5"></a-entity>
+        <!--Barril de Madeira-->
+        <!--https://sketchfab.com/3d-models/wood-barrel-a53f6eb8dbde42e3939e033670a6b082-->
+        <a-asset-item
+          id="barril_madeira"
+          src="assets/Island/wooden_barrel/scene.gltf"
+        ></a-asset-item>
 
-        <a-entity id="coco4" gltf-model="#cocos" position="15.73 0.23 5.09" scale="0.5 0.5 0.5" rotation="50 0 0">
-        </a-entity>
+        <!--Caranguejo-->
+        <!--https://sketchfab.com/3d-models/crab-claw-attack-dcf0e226564b4ec3b18dd5a93e6e8110-->
+        <a-asset-item
+          id="caranguejo"
+          src="assets/Island/crab/scene.gltf"
+        ></a-asset-item>
+      </a-assets>
 
-        <a-entity id="coco4" gltf-model="#cocos" position="15.73 0.23 4.09" scale="0.5 0.5 0.5" rotation="50 0 0">
-        </a-entity>
+      <!--Criação do cursor-->
+      <a-entity cursor="rayOrigin:mouse"></a-entity>
 
-        <!--Barris de metal-->
-        <a-entity id="barril1" gltf-model="#barris" scale="0.0015 0.0015 0.0015" position="-0.96 0.65 14"></a-entity>
+      <!--sky-->
+      <a-sky color="#4CC3D9" src="#sky"></a-sky>
 
-        <a-entity id="barril2" gltf-model="#barris" scale="0.0015 0.0015 0.0015" position="-1.96 0.65 14"></a-entity>
+      <!--Sistema de som-->
+      <a-sound
+        id="sound1"
+        src="assets/Island/island-sounds.mp3"
+        autoplay="true"
+        position="0 2 -24"
+        sound="loop: true"
+      ></a-sound>
 
-        <a-entity id="barril3" gltf-model="#barris" scale="0.0015 0.0015 0.0015" position="-1.96 0.65 13"></a-entity>
+      <a-sound
+        id="sound2"
+        src="assets/Island/island-sounds.mp3"
+        autoplay="true"
+        position="0 2 24"
+        sound="loop: true"
+      ></a-sound>
 
-        <!--Barris de madeira-->
-        <a-entity id="barril_m1" gltf-model="#barril_madeira" position="-4.26 0 -13.34" scale="1.2 1.2 1.2"></a-entity>
+      <a-sound
+        id="sound3"
+        src="assets/Island/island-sounds.mp3"
+        autoplay="true"
+        position="-29 2 0"
+        sound="loop: true"
+      ></a-sound>
 
-        <a-entity id="barril_m2" gltf-model="#barril_madeira" position="-3.26 0 -13.34" scale="1.2 1.2 1.2"></a-entity>
+      <a-sound
+        id="sound4"
+        src="assets/Island/island-sounds.mp3"
+        autoplay="true"
+        position="29 2 0"
+        sound="loop: true"
+      ></a-sound>
 
-        <a-entity id="barril_m3" gltf-model="#barril_madeira" position="-3.66 0 -12.34" scale="1.2 1.2 1.2"></a-entity>
+      <!--Oceano + ilha-->
+      <a-plane
+        id="ocean"
+        material="repeat: 1 1; src: #ocean; transparent: true"
+        height="30"
+        width="50"
+        position="-0.14 0 -2.7"
+        rotation="-90 0 0"
+        repeat="1000 1000"
+        geometry=""
+        scale="2 3.8 1"
+      >
+      </a-plane>
 
-        <a-entity id="barril_m4" gltf-model="#barril_madeira" position="-4.66 0 -12.34" scale="1.2 1.2 1.2"></a-entity>
+      <!--Cadeiras-->
+      <a-entity
+        id="cadeira1"
+        gltf-model="#cadeira"
+        rotation="0 -45 0"
+        scale="0.15 0.15 0.15"
+        position="-24.5 0 0"
+      >
+      </a-entity>
 
-        <a-entity id="barril_m5" gltf-model="#barril_madeira" position="-5.85 0.36 -11.72" scale="1.2 1.2 1.2"
-            rotation="-90 2.23 0"></a-entity>
+      <a-entity
+        id="cadeira2"
+        gltf-model="#cadeira"
+        rotation="0 -45 0"
+        scale="0.15 0.15 0.15"
+        position="-22.5 0 0.74"
+      >
+      </a-entity>
 
-        <!--Baús do Tesouro-->
-        <a-entity id="tesouro1" gltf-model="#tesouro" scale="0.02 0.02 0.02" position="-8.42 0 6.7" rotation="0 -90 0"
-            animation-mixer="timeScale:0; loop: once"
-            animation__open="property:animation-mixer.timeScale;startEvents: click;to:1"
-            animation__close="property:animation-mixer.timeScale;delay: 7000;startEvents:click;to:0">
-        </a-entity>
+      <!--Palmeiras-->
+      <a-entity
+        id="palmeiras1"
+        gltf-model="#palm-tree"
+        position="17.5 0 3.5"
+        rotation="0 15 0"
+      ></a-entity>
 
-        <a-entity id=" tesouro2" gltf-model="#tesouro" scale="0.02 0.02 0.02" position="-5.64 0 -16.61"
-            rotation="0 -60 0" animation-mixer="timeScale:0; loop: once"
-            animation__open="property:animation-mixer.timeScale;startEvents: click;to:1"
-            animation__close="property:animation-mixer.timeScale;delay: 7000;startEvents:click;to:0">
-        </a-entity>
+      <a-entity
+        id="palmeiras2"
+        gltf-model="#palm-tree"
+        position="-6.2 0 8.9"
+        rotation="0 90 0"
+      ></a-entity>
 
-        <a-entity id="tesouro3" gltf-model="#tesouro" scale="0.02 0.02 0.02" position="14.63 0 11.88" rotation="0 35 0"
-            animation-mixer="timeScale:0; loop: once"
-            animation__open="property:animation-mixer.timeScale;startEvents: click;to:1"
-            animation__close="property:animation-mixer.timeScale;delay: 7000;startEvents:click;to:0">
-        </a-entity>
+      <a-entity
+        id="palmeiras3"
+        gltf-model="#palm-tree"
+        position="4.3 0 15.9"
+        rotation="0 120 0"
+      ></a-entity>
 
-        <!--Caranguejos-->
-        <a-entity id="caranguejo1" gltf-model="#caranguejo" position="-16.05 -0.01 -6.85" rotation="0 35 0"></a-entity>
+      <!--Tenda-->
+      <a-entity
+        id="tenda"
+        gltf-model="#tenda"
+        rotation="0 96 0"
+        position="6.5 0.1 8.8"
+        scale="2 1.5 2.5"
+      ></a-entity>
 
-        <a-entity id="caranguejo2" gltf-model="#caranguejo" position="-18.05 -0.01 -6.85" rotation="0 75 0"></a-entity>
+      <!--Pedras-->
+      <a-entity
+        id="pedras1"
+        gltf-model="#pedras"
+        position="12.95 1.85 10.43"
+        scale="3 3 3"
+        rotation="0 90 0"
+      >
+      </a-entity>
 
-        <a-entity id="caranguejo3" gltf-model="#caranguejo" position="-20.8 -0.01 8.79" rotation="0 75 0"></a-entity>
+      <a-entity
+        id="pedras2"
+        gltf-model="#pedras"
+        position="-1.9 1.8 6.8"
+        scale="3 3 3"
+        rotation="0 90 0"
+      ></a-entity>
 
+      <!--Barco-->
+      <a-entity
+        id="barco"
+        gltf-model="#barco"
+        position="-9.5 -0.72 -15.2"
+        rotation="0 -70 0"
+        scale="2 2 2"
+      >
+      </a-entity>
 
+      <!--Fogueira-->
+      <a-entity
+        id="fogueira"
+        gltf-model="#fogueira"
+        scale="2 1.2 1.5"
+        position="13.2 1.09 -4.23"
+        rotation=""
+      >
+      </a-entity>
+
+      <!--Lenha-->
+      <a-entity
+        id="lenha1"
+        gltf-model="#lenha"
+        position="-8.8 0.63 11"
+        scale="3 3 3"
+        rotation="0 90 0"
+      ></a-entity>
+
+      <a-entity
+        id="lenha2"
+        gltf-model="#lenha"
+        position="-8.8 0.63 13.5"
+        scale="3 3 3"
+        rotation="0 90 0"
+      ></a-entity>
+
+      <!--Cocos-->
+      <a-entity
+        id="coco1"
+        gltf-model="#cocos"
+        position="16.33 0.23 1.36"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+
+      <a-entity
+        id="coco2"
+        gltf-model="#cocos"
+        position="17.33 0.23 1.36"
+        scale="0.5 0.5 0.5"
+        rotation="-50 0 0"
+      >
+      </a-entity>
+
+      <a-entity
+        id="coco3"
+        gltf-model="#cocos"
+        position="17.33 0.23 0.36"
+        scale="0.5 0.5 0.5"
+      ></a-entity>
+
+      <a-entity
+        id="coco4"
+        gltf-model="#cocos"
+        position="15.73 0.23 5.09"
+        scale="0.5 0.5 0.5"
+        rotation="50 0 0"
+      >
+      </a-entity>
+
+      <a-entity
+        id="coco4"
+        gltf-model="#cocos"
+        position="15.73 0.23 4.09"
+        scale="0.5 0.5 0.5"
+        rotation="50 0 0"
+      >
+      </a-entity>
+
+      <!--Barris de metal-->
+      <a-entity
+        id="barril1"
+        gltf-model="#barris"
+        scale="0.0015 0.0015 0.0015"
+        position="-0.96 0.65 14"
+      ></a-entity>
+
+      <a-entity
+        id="barril2"
+        gltf-model="#barris"
+        scale="0.0015 0.0015 0.0015"
+        position="-1.96 0.65 14"
+      ></a-entity>
+
+      <a-entity
+        id="barril3"
+        gltf-model="#barris"
+        scale="0.0015 0.0015 0.0015"
+        position="-1.96 0.65 13"
+      ></a-entity>
+
+      <!--Barris de madeira-->
+      <a-entity
+        id="barril_m1"
+        gltf-model="#barril_madeira"
+        position="-4.26 0 -13.34"
+        scale="1.2 1.2 1.2"
+      ></a-entity>
+
+      <a-entity
+        id="barril_m2"
+        gltf-model="#barril_madeira"
+        position="-3.26 0 -13.34"
+        scale="1.2 1.2 1.2"
+      ></a-entity>
+
+      <a-entity
+        id="barril_m3"
+        gltf-model="#barril_madeira"
+        position="-3.66 0 -12.34"
+        scale="1.2 1.2 1.2"
+      ></a-entity>
+
+      <a-entity
+        id="barril_m4"
+        gltf-model="#barril_madeira"
+        position="-4.66 0 -12.34"
+        scale="1.2 1.2 1.2"
+      ></a-entity>
+
+      <a-entity
+        id="barril_m5"
+        gltf-model="#barril_madeira"
+        position="-5.85 0.36 -11.72"
+        scale="1.2 1.2 1.2"
+        rotation="-90 2.23 0"
+      ></a-entity>
+
+      <!--Baús do Tesouro-->
+      <a-entity
+        id="tesouro1"
+        gltf-model="#tesouro"
+        scale="0.02 0.02 0.02"
+        position="-8.42 0 6.7"
+        rotation="0 -90 0"
+        animation-mixer="timeScale:0; loop: once"
+        animation__open="property:animation-mixer.timeScale;startEvents: click;to:1"
+        animation__close="property:animation-mixer.timeScale;delay: 7000;startEvents:click;to:0"
+      >
+      </a-entity>
+
+      <a-entity
+        id="tesouro2"
+        gltf-model="#tesouro"
+        scale="0.02 0.02 0.02"
+        position="-5.64 0 -16.61"
+        rotation="0 -60 0"
+        animation-mixer="timeScale:0; loop: once"
+        animation__open="property:animation-mixer.timeScale;startEvents: click;to:1"
+        animation__close="property:animation-mixer.timeScale;delay: 7000;startEvents:click;to:0"
+      >
+      </a-entity>
+
+      <a-entity
+        id="tesouro3"
+        gltf-model="#tesouro"
+        scale="0.02 0.02 0.02"
+        position="14.63 0 11.88"
+        rotation="0 35 0"
+        animation-mixer="timeScale:0; loop: once"
+        animation__open="property:animation-mixer.timeScale;startEvents: click;to:1"
+        animation__close="property:animation-mixer.timeScale;delay: 7000;startEvents:click;to:0"
+      >
+      </a-entity>
+
+      <!--Caranguejos-->
+      <a-entity
+        id="caranguejo1"
+        gltf-model="#caranguejo"
+        position="-16.05 -0.01 -6.85"
+        rotation="0 35 0"
+      ></a-entity>
+
+      <a-entity
+        id="caranguejo2"
+        gltf-model="#caranguejo"
+        position="-18.05 -0.01 -6.85"
+        rotation="0 75 0"
+      ></a-entity>
+
+      <a-entity
+        id="caranguejo3"
+        gltf-model="#caranguejo"
+        position="-20.8 -0.01 8.79"
+        rotation="0 75 0"
+      ></a-entity>
+
+      <a-entity
+        id="infoBox"
+        geometry="primitive: plane; width: 8.5"
+        position="0.25585 1.59545 -6.66204"
+        material="color: #00AAFF; roughness: 1"
+        text="width: 10; wrapCount: 90; color: #000; align: center; value: Find the 3 treasure chests to get out of this island"
+        scale="0.7 1 0.05"
+        rotation=""
+      >
+      </a-entity>
     </a-scene>
-</body>
 
+    <script src="island.js"></script>
+  </body>
 </html>
