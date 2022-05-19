@@ -9,18 +9,29 @@
   </head>
   <body>
     <a-scene>
-      <a-camera>
+      <a-camera
+        camera=""
+        rotation="0 90 0"
+        look-controls="pointerLockEnabled: true"
+        data-aframe-inspector-original-camera=""
+      >
         <!-- Representação visual do Cursor -->
         <a-entity
-          cursor
-          position="0 0 -1"
-          geometry="primitive: sphere; radius: 0.015"
+          cursor=""
+          position="0 0 -0.5"
+          w=""
+          geometry="primitive: sphere; radius: 0.01"
           material="color: #000000; shader: flat; opacity: 0.5"
+          look-controls="pointerLockEnabled: true"
+          rotation="-16.844959176846206 14.094761760218251 0"
         ></a-entity>
       </a-camera>
 
       <!-- Carregar ficheiros -->
       <a-assets>
+        <!-- Previews -->
+        <img id="firstRoomPreview" src="assets/First Room/first room.png" />
+
         <!-- Texturas -->
         <img src="assets/Snow Area/snow 1.jpg" id="floorTexture" />
         <img src="assets/Snow Area/sky.jpg" id="sky" />
@@ -130,6 +141,15 @@
           src="assets/Snow Area/Trenó/sled.glb"
         ></a-asset-item>
       </a-assets>
+
+      <!--Sistema de som-->
+      <a-sound
+        id="sound1"
+        src="assets/Snow Area/snow-sounds.mp3"
+        autoplay="true"
+        position="3.672 7.532 0"
+        sound="loop: true"
+      ></a-sound>
 
       <a-sky src="#sky"></a-sky>
 
@@ -642,6 +662,34 @@
         rotation="0 29.999999999999996 0"
         scale="7 7 7"
       ></a-entity>
+
+      <!-- Portal -->
+      <a-link
+        id="firstRoomPortal"
+        href="index.html"
+        position="-7.603 1.5 0.182"
+        rotation="0 90 0"
+        image="#firstRoomPreview"
+        geometry="primitive: circle; segments: 64"
+        material="shader: portal; pano: #firstRoomPreview; side: double"
+        ><a-entity
+          text="color: white; align: center; font: kelsonsans; width: 5"
+          position="0 1.5 1"
+          rotation=""
+        ></a-entity
+        ><a-entity
+          geometry="primitive: sphere; segmentsWidth: 64; segmentsHeight: 64; phiLength: 180; thetaLength: 360"
+          material="shader: portal; borderEnabled: 0; pano: [object HTMLImageElement]; side: back"
+          rotation="0 180 0"
+          position=""
+          visible="false"
+        ></a-entity
+        ><a-entity
+          geometry="primitive: sphere; radius: 10; segmentsWidth: 64; segmentsHeight: 64"
+          material="shader: portal; borderEnabled: 0; pano: [object HTMLImageElement]; side: back"
+          visible="false"
+        ></a-entity
+      ></a-link>
     </a-scene>
   </body>
 </html>

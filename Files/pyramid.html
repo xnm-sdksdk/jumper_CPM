@@ -5,25 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <!-- Componente de gestão de portais -->
-    <script src="https://unpkg.com/aframe-web-portals@1.0.1/dist/aframe-web-portals.umd.js"></script>
     <!-- Componente para animação de gltf -->
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.0/dist/aframe-extras.min.js"></script>
     <title>Inside the Pyramid</title>
   </head>
   <body>
     <a-scene>
-      <a-camera position="-55 8 50">
+      <a-camera
+        position="-55 8 50"
+        camera=""
+        rotation="0 90 0"
+        look-controls="pointerLockEnabled: true"
+        data-aframe-inspector-original-camera=""
+      >
         <!-- Representação visual do Cursor -->
         <a-entity
-          cursor
-          position="0 0 -.5"
+          cursor=""
+          position="0 0 -0.5"
+          w=""
           geometry="primitive: sphere; radius: 0.01"
           material="color: #000000; shader: flat; opacity: 0.5"
+          look-controls="pointerLockEnabled: true"
+          rotation="-16.844959176846206 14.094761760218251 0"
         ></a-entity>
       </a-camera>
 
       <a-assets>
+        <!-- Previews -->
+        <img id="desertPreview" src="assets/First Room/desert.png" />
+        <img id="firstRoomPreview" src="assets/First Room/first room.png" />
+
         <!-- This work is based on "Desert Dungeon" (https://sketchfab.com/3d-models/desert-dungeon-caec2087d3b542adb318f9f187f56f43) by C. Anastasiadis (https://sketchfab.com/bagatir) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/) -->
         <a-asset-item
           id="dungeonModel"
@@ -72,6 +83,15 @@
           src="assets/Desert/Inside Pyramid/egypt thanos/scene.gltf"
         ></a-asset-item>
       </a-assets>
+
+      <!--Sistema de som-->
+      <a-sound
+        id="sound1"
+        src="assets/Desert/Inside Pyramid/pyramid-sound.mp3"
+        autoplay="true"
+        position="0 18.922 48.574"
+        sound="loop: true"
+      ></a-sound>
 
       <!-- Modificar Luz Padrão -->
       <a-entity light="type: ambient; color: #CCC; intensity: 0"></a-entity>
@@ -223,14 +243,63 @@
       ></a-entity>
 
       <!-- Portais -->
-
-      <a-entity
-        id="portal1"
-        position="-65.27136 12.770 48.539"
-        scale="15 10 2"
+      <!-- Desert -->
+      <a-link
+        id="desertPortal"
+        href="desert.html"
+        position="-69.867 13.450 47.712"
         rotation="0 90 0"
-        web-portal="url:desert.html"
-      ></a-entity>
+        scale="15 15 15"
+        image="#desertPreview"
+        geometry="primitive: circle; segments: 64"
+        material="shader: portal; pano: #desertPreview; side: double"
+        ><a-entity
+          text="color: white; align: center; font: kelsonsans; width: 5"
+          position="0 1.5 1"
+          rotation=""
+        ></a-entity
+        ><a-entity
+          geometry="primitive: sphere; segmentsWidth: 64; segmentsHeight: 64; phiLength: 180; thetaLength: 360"
+          material="shader: portal; borderEnabled: 0; pano: [object HTMLImageElement]; side: back"
+          rotation="0 180 0"
+          position=""
+          visible="false"
+        ></a-entity
+        ><a-entity
+          geometry="primitive: sphere; radius: 10; segmentsWidth: 64; segmentsHeight: 64"
+          material="shader: portal; borderEnabled: 0; pano: [object HTMLImageElement]; side: back"
+          visible="false"
+        ></a-entity
+      ></a-link>
+
+      <!-- First Room -->
+      <a-link
+        id="firstRoomPortal"
+        href="index.html"
+        position="0 10.960 -21.060"
+        rotation="-20.000 0 0"
+        scale="15 15 15"
+        image="#firstRoomPreview"
+        geometry="primitive: circle; segments: 64"
+        material="shader: portal; pano: #firstRoomPreview; side: double"
+        ><a-entity
+          text="color: white; align: center; font: kelsonsans; width: 5"
+          position="0 1.5 1"
+          rotation=""
+        ></a-entity
+        ><a-entity
+          geometry="primitive: sphere; segmentsWidth: 64; segmentsHeight: 64; phiLength: 180; thetaLength: 360"
+          material="shader: portal; borderEnabled: 0; pano: [object HTMLImageElement]; side: back"
+          rotation="0 180 0"
+          position=""
+          visible="false"
+        ></a-entity
+        ><a-entity
+          geometry="primitive: sphere; radius: 10; segmentsWidth: 64; segmentsHeight: 64"
+          material="shader: portal; borderEnabled: 0; pano: [object HTMLImageElement]; side: back"
+          visible="false"
+        ></a-entity
+      ></a-link>
     </a-scene>
   </body>
 </html>

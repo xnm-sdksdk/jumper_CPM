@@ -5,18 +5,25 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Desert</title>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <!-- Componente de gestão de portais -->
-    <script src="https://unpkg.com/aframe-web-portals@1.0.1/dist/aframe-web-portals.umd.js"></script>
   </head>
   <body>
     <a-scene>
-      <a-camera position="-10 1.6 -10">
+      <a-camera
+        position="26.846 1.6 25.603"
+        camera=""
+        rotation="0 0 0"
+        look-controls="pointerLockEnabled: true"
+        data-aframe-inspector-original-camera=""
+      >
         <!-- Representação visual do Cursor -->
         <a-entity
-          cursor
-          position="0 0 -.5"
-          geometry="primitive: sphere; radius: 0.005"
+          cursor=""
+          position="0 0 -0.5"
+          w=""
+          geometry="primitive: sphere; radius: 0.01"
           material="color: #000000; shader: flat; opacity: 0.5"
+          look-controls="pointerLockEnabled: true"
+          rotation="-16.844959176846206 14.094761760218251 0"
         ></a-entity>
       </a-camera>
 
@@ -56,6 +63,39 @@
         ></a-asset-item>
       </a-assets>
 
+      <!--Sistema de som-->
+      <a-sound
+        id="sound1"
+        src="assets/Desert/desert-sounds.mp3"
+        autoplay="true"
+        position="0 2 -48.149"
+        sound="loop: true"
+      ></a-sound>
+
+      <a-sound
+        id="sound2"
+        src="assets/Desert/desert-sounds.mp3"
+        autoplay="true"
+        position="0 2 40.891"
+        sound="loop: true"
+      ></a-sound>
+
+      <a-sound
+        id="sound3"
+        src="assets/Desert/desert-sounds.mp3"
+        autoplay="true"
+        position="-42.107 2 0"
+        sound="loop: true"
+      ></a-sound>
+
+      <a-sound
+        id="sound4"
+        src="assets/Desert/desert-sounds.mp3"
+        autoplay="true"
+        position="49.868 2 0"
+        sound="loop: true"
+      ></a-sound>
+
       <!-- Céu -->
       <a-sky src="#skyTexture"></a-sky>
 
@@ -87,26 +127,6 @@
         geometry=""
         rotation="-29.999999999999996 0 0"
       ></a-triangle>
-
-      <!-- <a-triangle
-        id="pyramideWall3"
-        position="25 21.181 -37.255"
-        rotation="-30 -180 0"
-        material="src: #pyramidTexture; repeat: 5 5"
-        scale="50 50 50"
-        geometry=""
-        rotation="-29.999999999999996 0 0"
-      ></a-triangle>
-
-      <a-triangle
-        id="pyramideWall4"
-        position="37.518 21.181 -24.821"
-        rotation="-30 -270 0"
-        material="src: #pyramidTexture; repeat: 5 5"
-        scale="50 50 50"
-        geometry=""
-        rotation="-29.999999999999996 0 0"
-      ></a-triangle> -->
 
       <!-- Fóssil do Mamute -->
       <a-entity
@@ -289,14 +309,34 @@
         rotation="0 -100 0"
       ></a-entity>
 
-      <!-- Portal -->
-      <a-entity
-        id="portal"
-        position="24.978 3.485 -2.164"
-        rotation="-30 0 0"
-        web-portal="url:pyramid.html"
+      <!-- Portal para dentro da pirâmide -->
+      <a-link
+        id="pyramidPortal"
+        href="pyramid.html"
+        position="19.346 2.751 -1.724"
+        rotation="-30.000 0 0"
         scale="3 3 3"
-      ></a-entity>
+        image="#pyramidPreview"
+        geometry="primitive: circle; segments: 64"
+        material="shader: portal; pano: #pyramidPreview; side: double"
+        ><a-entity
+          text="color: black; align: center; font: kelsonsans; width: 5"
+          position="0 1.5 0"
+          rotation="0 90 0"
+        ></a-entity
+        ><a-entity
+          geometry="primitive: sphere; segmentsWidth: 64; segmentsHeight: 64; phiLength: 180; thetaLength: 360"
+          material="shader: portal; borderEnabled: 0; pano: [object HTMLImageElement]; side: back"
+          rotation="0 180 0"
+          position=""
+          visible="false"
+        ></a-entity
+        ><a-entity
+          geometry="primitive: sphere; radius: 10; segmentsWidth: 64; segmentsHeight: 64"
+          material="shader: portal; borderEnabled: 0; pano: [object HTMLImageElement]; side: back"
+          visible="false"
+        ></a-entity
+      ></a-link>
     </a-scene>
   </body>
 </html>

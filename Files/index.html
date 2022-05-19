@@ -5,21 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <!-- Componente de gestão de portais -->
-    <script src="https://unpkg.com/aframe-web-portals@1.0.1/dist/aframe-web-portals.umd.js"></script>
-    <!-- Componente de gestão de eventos -->
-    <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
     <title>Beginning Room (A-Frame)</title>
   </head>
   <body>
     <a-scene>
-      <a-camera>
+      <a-camera
+        camera=""
+        rotation="0 0 0"
+        look-controls="pointerLockEnabled: true"
+        data-aframe-inspector-original-camera=""
+      >
         <!-- Representação visual do Cursor -->
         <a-entity
-          cursor
-          position="0 0 -.5"
+          cursor=""
+          position="0 0 -0.5"
+          w=""
           geometry="primitive: sphere; radius: 0.01"
           material="color: #000000; shader: flat; opacity: 0.5"
+          look-controls="pointerLockEnabled: true"
+          rotation="-16.844959176846206 14.094761760218251 0"
         ></a-entity>
       </a-camera>
 
@@ -27,6 +31,12 @@
         <!-- Texturas -->
         <img id="floorTexture" src="assets/First Room/floor.png" />
         <img id="wallTexture" src="assets/First Room/wall.jpg" />
+
+        <!-- Previews -->
+        <img id="islandPreview" src="assets/First Room/island.png" />
+        <img id="snowPreview" src="assets/First Room/snow.png" />
+        <img id="desertPreview" src="assets/First Room/desert.png" />
+        <img id="portPreview" src="assets/First Room/port.png" />
       </a-assets>
 
       <!-- Modificar Luz Padrão -->
@@ -89,82 +99,119 @@
         rotation="90 0 0"
       ></a-plane>
 
-      <!-- Portals -->
-      <a-entity
-        id="portal1"
-        position="0 0 -4.920"
-        web-portal="url:snow.html; text:Snow;"
-      ></a-entity>
+      <!-- Portais -->
 
-      <a-entity
-        id="portal2"
-        position="0 0 4.920"
-        rotation="0 180 0"
-        web-portal="url:desert.html; text:Desert;"
-      ></a-entity>
-
-      <a-entity
-        id="portal3"
-        position="-4.920 0 0"
+      <!-- Island -->
+      <a-link
+        id="islandPortal"
+        href="island.html"
+        position="-4.936 1.5 0"
         rotation="0 90 0"
-        web-portal="url:port.html; text:Port;"
-      ></a-entity>
+        image="#islandPreview"
+        geometry="primitive: circle; segments: 64"
+        material="shader: portal; pano: #islandPreview; side: double"
+        ><a-entity
+          text="color: white; align: center; font: kelsonsans; width: 5"
+          position="0 1.5 1"
+          rotation=""
+        ></a-entity
+        ><a-entity
+          geometry="primitive: sphere; segmentsWidth: 64; segmentsHeight: 64; phiLength: 180; thetaLength: 360"
+          material="shader: portal; borderEnabled: 0; pano: [object HTMLImageElement]; side: back"
+          rotation="0 180 0"
+          position=""
+          visible="false"
+        ></a-entity
+        ><a-entity
+          geometry="primitive: sphere; radius: 10; segmentsWidth: 64; segmentsHeight: 64"
+          material="shader: portal; borderEnabled: 0; pano: [object HTMLImageElement]; side: back"
+          visible="false"
+        ></a-entity
+      ></a-link>
 
-      <a-entity
-        id="portal4"
-        position="4.920 0 0"
-        rotation="0 270 0"
-        web-portal="url:https://aframe.io/; text:Island;"
-      ></a-entity>
+      <!-- Snow -->
+      <a-link
+        id="snowPortal"
+        href="snow.html"
+        position="4.936 1.5 0"
+        rotation="0 -90 0"
+        image="#snowPreview"
+        geometry="primitive: circle; segments: 64"
+        material="shader: portal; pano: #snowPreview; side: double"
+        ><a-entity
+          text="color: white; align: center; font: kelsonsans; width: 5"
+          position="0 1.5 1"
+          rotation=""
+        ></a-entity
+        ><a-entity
+          geometry="primitive: sphere; segmentsWidth: 64; segmentsHeight: 64; phiLength: 180; thetaLength: 360"
+          material="shader: portal; borderEnabled: 0; pano: [object HTMLImageElement]; side: back"
+          rotation="0 180 0"
+          position=""
+          visible="false"
+        ></a-entity
+        ><a-entity
+          geometry="primitive: sphere; radius: 10; segmentsWidth: 64; segmentsHeight: 64"
+          material="shader: portal; borderEnabled: 0; pano: [object HTMLImageElement]; side: back"
+          visible="false"
+        ></a-entity
+      ></a-link>
 
-      <!-- Portas -->
-
-      <!-- First Door -->
-      <a-box
-        id="door1"
-        color="#504e4e"
-        scale="1.5 2.5 0.3"
-        position="0 1.161 -4.738"
-        event-set__mouseenter="color: #c4c4c4"
-        event-set__mouseleave="color: #504e4e"
-        event-set__Open="_event: click; rotation: 0 90 0; position: -0.925 1.161 -4.223"
-      ></a-box>
-
-      <!-- Second Door -->
-      <a-box
-        id="door2"
-        color="#504e4e"
-        scale="1.5 2.5 0.3"
-        position="0 1.161 4.738"
-        event-set__mouseenter="color: #c4c4c4"
-        event-set__mouseleave="color: #504e4e"
-        event-set__open="_event: click; rotation: 0 90 0; position: 0.925 1.161 4.223"
+      <!-- Desert -->
+      <a-link
+        id="desertPortal"
+        href="desert.html"
+        position="0 1.5 4.936"
         rotation="0 0 0"
-      ></a-box>
+        image="#desertPreview"
+        geometry="primitive: circle; segments: 64"
+        material="shader: portal; pano: #desertPreview; side: double"
+        ><a-entity
+          text="color: white; align: center; font: kelsonsans; width: 5"
+          position="0 1.5 1"
+          rotation=""
+        ></a-entity
+        ><a-entity
+          geometry="primitive: sphere; segmentsWidth: 64; segmentsHeight: 64; phiLength: 180; thetaLength: 360"
+          material="shader: portal; borderEnabled: 0; pano: [object HTMLImageElement]; side: back"
+          rotation="0 180 0"
+          position=""
+          visible="false"
+        ></a-entity
+        ><a-entity
+          geometry="primitive: sphere; radius: 10; segmentsWidth: 64; segmentsHeight: 64"
+          material="shader: portal; borderEnabled: 0; pano: [object HTMLImageElement]; side: back"
+          visible="false"
+        ></a-entity
+      ></a-link>
 
-      <!-- Third Door -->
-      <a-box
-        id="door3"
-        color="#504e4e"
-        scale="1.5 2.5 0.3"
-        position="4.738 1.161 0"
-        event-set__mouseenter="color: #c4c4c4"
-        event-set__mouseleave="color: #504e4e"
-        event-set__open="_event: click; rotation: 0 180 0; position: 4.738 1.161 -0.925"
-        rotation="0 90 0"
-      ></a-box>
-
-      <!-- Fourth Door -->
-      <a-box
-        id="door3"
-        color="#504e4e"
-        scale="1.5 2.5 0.3"
-        position="-4.738 1.161 0"
-        event-set__mouseenter="color: #c4c4c4"
-        event-set__mouseleave="color: #504e4e"
-        event-set__open="_event: click; rotation: 0 180 0; position: -4.738 1.161 0.925"
-        rotation="0 90 0"
-      ></a-box>
+      <!-- Port -->
+      <a-link
+        id="portPortal"
+        href="port.html"
+        position="0 1.5 -4.936"
+        rotation="0 180 0"
+        image="#portPreview"
+        geometry="primitive: circle; segments: 64"
+        material="shader: portal; pano: #portPreview; side: double"
+        ><a-entity
+          text="color: white; align: center; font: kelsonsans; width: 5"
+          position="0 1.5 1"
+          rotation=""
+        ></a-entity
+        ><a-entity
+          geometry="primitive: sphere; segmentsWidth: 64; segmentsHeight: 64; phiLength: 180; thetaLength: 360"
+          material="shader: portal; borderEnabled: 0; pano: [object HTMLImageElement]; side: back"
+          rotation="0 180 0"
+          position=""
+          visible="false"
+        ></a-entity
+        ><a-entity
+          geometry="primitive: sphere; radius: 10; segmentsWidth: 64; segmentsHeight: 64"
+          material="shader: portal; borderEnabled: 0; pano: [object HTMLImageElement]; side: back"
+          visible="false"
+        ></a-entity
+      ></a-link>
     </a-scene>
   </body>
 </html>
