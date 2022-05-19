@@ -4,14 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://unpkg.com/aframe-web-portals@1.0.1/dist/aframe-web-portals.umd.js"></script>
+    <script src="//cdn.rawgit.con/donmccurdy/aframe-extras/v4.1.2/dist/aframe-extras.min.js"></script>
     <title>Jumper | Port </title>
 
 </head>
+
 <body>
     <a-scene>
+        <a-camera>
+            <a-entity
+              cursor
+              position="0 5 0"
+              geometry="primitive: sphere; radius: 0.01"
+              material="color: #000000; shader: flat; opacity: 0.5"
+            ></a-entity>
+          </a-camera>
 
     <a-assets>
+        <!--Sky-->
+        <img  id="sky" src="assets/Port/sky.jpg">
         <!--Floor-->
         <img id="concret" src="assets/Port/concretFloor.png">
         <!--contentor grey-->
@@ -20,19 +33,99 @@
         <img id="container" src="assets/Port/container.jpeg">
         <!--green-->
         <img id="green" src="assets/Port/green.jpeg">
+        <!--Yellow-->
+        <img id="yellow" src="assets/Port/yellow.jpeg">
+        <!--Rusty-->
+        <img id="rusty" src="assets/Port/rusty.jpeg">
         <!--wall-->
         <img id="wall" src="assets/Port/wall.jpg">
         <!--wall 2-->
         <img id="wall2" src="assets/Port/wall_2.jpeg">
+        <!--white-->
+        <img id="white" src="assets/Port/white.jpg">
+        <!--damaged-->
+        <img id="damaged" src="assets/Port/damaged.jpg">
+        <!--pile-->
+        <img id="pile" src="assets/Port/pile.png">
+        <!--vignette-->
+        <img id="vignette" src="assets/Port/vignette.png">
         <!--AUDIO-->
         <audio id="ship" src="assets/Port/port.mp3"></audio>
+        <!--truck-->
+        <audio id="truck" src="assets/Port/Truck.mp3"></audio>
     </a-assets>
 
+<!--Sound ship-->
+<a-entity id="sound" 
+        position="0 0 0" sound="src: #ship; autoplay: true; loop:true"
+        dur="15000";
+        loop="true";
+        dir="alternate";
+        easing="linear";
+        ></a-entity>
+
+
+        <a-entity id="sound_2.0" 
+        position="0 0 0" sound="src: #truck; autoplay: true; loop:true"
+        dur="5000";
+        loop="true";
+        dir="alternate";
+        easing="linear";
+        ></a-entity>
+
+
+<!--Ambient Light-->
+<a-entity light="type : ambient; color: #bbb; intensity: 0.8"></a-entity>
+
+<!--Spot 1st corner-->
+<a-entity light="type: spot; color: #eedd82;
+angle: 35;
+decay: -15.21;
+distance: 2.07;
+intensity: 0.72;
+penumbra: 1"
+rotation="-90 0 0"
+position="-319.8 80 -332">
+</a-entity>
+
+<!--Spot 2st corner-->
+<a-entity light="type: spot; color: #eedd82;
+angle: 35;
+decay: -15.21;
+distance: 2.07;
+intensity: 0.72;
+penumbra: 1"
+rotation="-90 0 0"
+position="348.2 80 -254.6">
+</a-entity>
+
+
+<!--Portal 1-->
+<a-entity
+id="portal_1"
+position="-323.5 13 -334.4"
+rotation="0 45 0"
+scale="10 10 2"
+web-portal="url:desert.html; text:Desert">
+</a-entity>
+
+
+<!--Portal 2-->
+<a-entity
+    id="portal_2"
+    position="345.9 12 -251.2"
+    rotation="0 -90 0"
+    scale="10 10 2"
+    web-portal="url:index.html; text:?">
+</a-entity>
 
 
 <!--sky-->
-    <a-sky
-        color="#4CC3D9"
+    <a-sky src="#sky"
+    radius="800"
+    repeat="-1 1"
+    rotation="-90 0 0"
+    position="0 -55 0"
     ></a-sky>
 
 
@@ -49,19 +142,10 @@
     roughness="0.5"
     width="100"
     height="100"
+    static-body
     ></a-plane>
 
 
-<!--camera
-    <a-entity
-        camera look-controls position="0 1.6 0"
-    ></a-entity>
-    <a-camera>
-    <a-cursor></a-cursor>
-    367.27453 2.28505 8.07712
-</a-camera>
-
--->
 
 <!--Wall 1-->
     <!--Container wall 1 - 4x4-->
@@ -357,7 +441,7 @@
     </a-box>
 
     <!--container wall 19 - 4x4 -->
-    <a-box position="354.1 20.1 -68"
+    <a-box position="354.1 20.1 -68.2"
         rotation="0 90 0"
         color="#ffffff"
         width="50"
@@ -372,12 +456,85 @@
         metalness="0.5">
     </a-box>
 
+    <!--container wall 20 - 4x4 -->
+    <a-box position="354.1 20.1 -118.5"
+        rotation="0 90 0"
+        color="#ffffff"
+        width="50"
+        height="40"
+        depth="15"
+        src="#wall"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#wall"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
 
+    <!--container wall 21 - 4x4 -->
+    <a-box position="354.1 20.1 -169"
+        rotation="0 90 0"
+        color="#ffffff"
+        width="50"
+        height="40"
+        depth="15"
+        src="#wall"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#wall"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
 
+<!-- Container wall 12 - 4x4-->
+<a-box position="353.4 20.1 -285.7"
+    rotation="0 -90 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
 
+<!-- Container wall 13 - 4x4-->
+<a-box position="354 20.1 -219.5"
+    rotation="0 -90 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
 
-
-
+<!-- Container wall 14 - 4x4-->
+<a-box position="354 20.1 -219.5"
+    rotation="0 -90 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
 
 <!--Wall 3-->
 
@@ -509,6 +666,133 @@
     metalness="0.5">
 </a-box>
 
+<!-- Container wall 9 - 4x4-->
+<a-box position="255 20.1 -393.2"
+    rotation="0 -15 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 10 - 4x4-->
+<a-box position="303 20.1 -373.2"
+    rotation="0 -30 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 11 - 4x4-->
+<a-box position="340 20.1 -336.3"
+    rotation="0 -60 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 12 - 4x4-->
+<a-box position="-200 20.1 -400"
+    rotation="0 0 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 13 - 4x4-->
+<a-box position="-250.8 20.1 -386.6"
+    rotation="0 30 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 14 - 4x4-->
+<a-box position="-386.3 20.1 -270.2"
+    rotation="0 60 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 15 - 4x4-->
+<a-box position="-352.7 20.1 -310.2"
+    rotation="0 40 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 16 - 4x4-->
+<a-box position="-293.9 20.1 -359.2"
+    rotation="0 35 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
 
 
 
@@ -516,6 +800,252 @@
 
 
 
+
+
+
+<!-- Wall 4 -->
+<!-- Container wall 1 - 4x4-->
+<a-box position="-400 20.1 -219.5"
+    rotation="0 -90 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 2 - 4x4-->
+<a-box position="-400 20.1 -169.3"
+    rotation="0 -90 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 3 - 4x4-->
+<a-box position="-400 20.1 -119"
+    rotation="0 -90 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 4 - 4x4-->
+<a-box position="-400 20.1 -68.7"
+    rotation="0 -90 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 4 - 4x4-->
+<a-box position="-400 20.1 -18.2"
+    rotation="0 -90 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 5 - 4x4-->
+<a-box position="-400 20.1 32.2"
+    rotation="0 -90 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 6 - 4x4-->
+<a-box position="-400 20.1 82.6"
+    rotation="0 -90 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 7 - 4x4-->
+<a-box position="-400 20.1 132.8"
+    rotation="0 -90 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 8 - 4x4-->
+<a-box position="-400 20.1 182.8"
+    rotation="0 -90 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 9 - 4x4-->
+<a-box position="-393.3 20.1 234"
+    rotation="0 105 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 10 - 4x4-->
+<a-box position="-373 20.1 281.7"
+    rotation="0 120.5 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 11 - 4x4-->
+<a-box position="-339 20.1 321.6"
+    rotation="0 140 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 12 - 4x4-->
+<a-box position="-200.8 20.1 390.9"
+    rotation="0 160 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 13 - 4x4-->
+<a-box position="-248.3 20.1 373.5"
+    rotation="0 160 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!-- Container wall 14 - 4x4-->
+<a-box position="-295.7 20.1 351"
+    rotation="0 150 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+
+<!--MAZE-->
 
 
    <!--Container wall 1 - 3x1-->
@@ -554,9 +1084,9 @@
     geometry="">
     </a-box>
 
-    <!--Container wall 3 - 3x1-->
-    <a-box position="-37.44197 20.1 -254.52341"
-    rotation=""
+    <!--Container wall 3 - 3x1 Next to the grey-->
+    <a-box position="-32.6 20.1 -217.5"
+    rotation="0 90 0"
     color="#ffffff"
     width="50"
     height="40"
@@ -574,7 +1104,7 @@
 
     <!--Container wall 4 - 3x1-->
     <a-box position="-234.8252 20.1 -60"
-    rotation="0 89900 0"
+    rotation="0 90 0"
     color="#ffffff"
     width="50"
     height="40"
@@ -591,14 +1121,62 @@
     </a-box>
 
 
+<!--Container wall 5 - 3x1-->
+<a-box position="80.605 20.1 -25.593"
+rotation="0 90 0"
+color="#ffffff"
+width="50"
+height="40"
+depth="15"
+src="#wall2"
+roughness="0.1"
+repeat="1 1"
+normal-map="#wall2"
+normal-scale="1 -1"
+side="double"
+metalness="0.5"
+material=""
+geometry="">
+</a-box>
 
 
+<!--Container wall 6 - 3x1-->
+<a-box position="-84.622 20.1 -25.667"
+rotation="0 90 0"
+color="#ffffff"
+width="50"
+height="40"
+depth="15"
+src="#wall2"
+roughness="0.1"
+repeat="1 1"
+normal-map="#wall2"
+normal-scale="1 -1"
+side="double"
+metalness="0.5"
+material=""
+geometry="">
+</a-box>
 
 
+    <!--Container grey 1-->
+    <a-box position="248.9 10.1 -321.7"
+        rotation="0 90 0"
+        color="#ffffff"
+        width="50"
+        height="20"
+        depth="15"
+        src="#metal"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#metal"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
 
-
-    <!--Container grey-->
-    <a-box position="2.25 10.1 -200"
+    <!--Container grey 2-->
+    <a-box position="8.340 10.1 15.965"
         rotation="0 0 0"
         color="#ffffff"
         width="50"
@@ -613,8 +1191,121 @@
         metalness="0.5">
     </a-box>
 
-    <!--Container Orange-->
-    <a-box position="52.3 10.1 -200"
+    <!--Container grey 3-->
+    <a-box position="185.07 10.1 162.88"
+        rotation="0 90 0"
+        color="#ffffff"
+        width="50"
+        height="20"
+        depth="15"
+        src="#metal"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#metal"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
+
+    <!--Container grey 4-->
+    <a-box position="-70.737 10.1 287.98"
+        rotation="0 0 0"
+        color="#ffffff"
+        width="50"
+        height="20"
+        depth="15"
+        src="#metal"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#metal"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
+
+<!--Container grey 5-->
+<a-box position="-143.42 10.1 -298.8"
+    rotation="0 0 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#metal"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#metal"
+    normal-scale="1 -1"
+    side="double"
+metalness="0.5">
+</a-box>
+
+<!--Container grey 6-->
+<a-box position="148.16 10.1 6.931"
+    rotation="0 0 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#metal"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#metal"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--Container grey 7-->
+<a-box position="-269.20 10.1 268.10"
+    rotation="0 -45 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#metal"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#metal"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--Container grey 8-->
+<a-box position="-300.18 10.1 -197.23"
+    rotation="0 90 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#metal"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#metal"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+    <!--Container Orange 1-->
+    <a-box position="178.2 10.1 -273.3"
+        rotation="0 45 0"
+        color="#ffffff"
+        width="50"
+        height="20"
+        depth="15"
+        src="#container"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#container"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5"
+        static-body>
+    </a-box>
+
+    <!--Container Orange 2-->
+    <a-box position="48.025 10.1 -43"
         rotation="0 0 0"
         color="#ffffff"
         width="50"
@@ -626,12 +1317,116 @@
         normal-map="#container"
         normal-scale="1 -1"
         side="double"
-        metalness="0.5">
+        metalness="0.5"
+        static-body>
+    </a-box>
+
+    <!--Container Orange 3-->
+    <a-box position="185.07 10.1 112.75"
+        rotation="0 90 0"
+        color="#ffffff"
+        width="50"
+        height="20"
+        depth="15"
+        src="#container"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#container"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5"
+        static-body>
+    </a-box>
+
+    <!--Container Orange 4-->
+    <a-box position="-120.83 10.1 288.03"
+        rotation="0 0 0"
+        color="#ffffff"
+        width="50"
+        height="20"
+        depth="15"
+        src="#container"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#container"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5"
+        static-body>
+    </a-box>
+
+    <!--Container Orange 5-->
+    <a-box position="-302.4 10.1 -92.7"
+        rotation="0 0 0"
+        color="#ffffff"
+        width="50"
+        height="20"
+        depth="15"
+        src="#container"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#container"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5"
+        static-body>
+    </a-box>
+
+    <!--Container Orange 6-->
+    <a-box position="320.69 10.1 -268.3"
+        rotation="0 0 0"
+        color="#ffffff"
+        width="50"
+        height="20"
+        depth="15"
+        src="#container"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#container"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5"
+        static-body>
+    </a-box>
+
+    <!--Container Orange 7-->
+    <a-box position="-44 10.1 130"
+        rotation="0 0 0"
+        color="#ffffff"
+        width="50"
+        height="20"
+        depth="15"
+        src="#container"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#container"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5"
+        static-body>
+    </a-box>
+
+    <!--Container Orange 8-->
+    <a-box position="-110.7 10.1 -281.22"
+        rotation="0 90 0"
+        color="#ffffff"
+        width="50"
+        height="20"
+        depth="15"
+        src="#container"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#container"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5"
+        static-body>
     </a-box>
 
 
-       <!--Container green-->
-       <a-box position="102.4 10.1 95.30819"
+       <!--Container green 1-->
+       <a-box 
+       position="102.4 10.1 95.30819"
        rotation="" color="#ffffff"
        width="50"
        height="20"
@@ -647,6 +1442,932 @@
        geometry="">
     </a-box>
 
-    </a-scene>
+    <!--Container green 2-->
+    <a-box position="-318 10.1 -296.70"
+        rotation="0 -50 0"
+        color="#ffffff"
+        width="50"
+        height="20"
+        depth="15"
+        src="#green"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#green"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5"
+        material=""
+        geometry="">
+    </a-box>
+
+ <!--Container green 3-->
+ <a-box static-body
+    position="-2 10.1 -43"
+    rotation="" color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#green"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#green"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5"
+    material=""
+    geometry="">
+</a-box>
+
+<!--Container green 4-->
+<a-box static-body
+    position="-32.7 10.1 -167.3"
+    rotation="0 90 0" color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#green"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#green"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5"
+    material=""
+    geometry="">
+</a-box>
+
+<!--Container green 5-->
+<a-box
+    position="272.3 10.1 -248.7"
+    rotation="0 45 0" color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#green"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#green"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5"
+    material=""
+    geometry="">
+</a-box>
+
+<!--Container green 6-->
+<a-box
+    position="-326.7 10.1 -153.7"
+    rotation="0 30 0" color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#green"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#green"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5"
+    material=""
+    geometry="">
+</a-box>
+
+<!--Container green 7-->
+<a-box 
+    position="39 10.1 196.3"
+    rotation="" color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#green"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#green"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5"
+    material=""
+    geometry="">
+</a-box>
+
+<!--Container green 8-->
+<a-box static-body
+    position="-170.92 10.1 288.04"
+    rotation="" color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#green"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#green"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5"
+    material=""
+    geometry="">
+</a-box>
+
+    <!--Container Yellow 1-->
+    <a-box position="-234.52 10.1 -9.77"
+        rotation="0 90 0"
+        color="#ffffff"
+        width="50"
+        height="20"
+        depth="15"
+        src="#yellow"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#yellow"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
+
+    <!--Container Yellow 1.1-->
+    <a-box position="239 10.1 -253.8"
+        rotation="0 15 0"
+        color="#ffffff"
+        width="50"
+        height="20"
+        depth="15"
+        src="#yellow"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#yellow"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
+
+    <!--Container Yellow 2-->
+    <a-box position="-252.3 10.1 -92.8"
+        rotation="0 0 0"
+        color="#ffffff"
+        width="50"
+        height="20"
+        depth="15"
+        src="#yellow"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#yellow"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
+
+    <!--Container Yellow 3-->
+    <a-box position="56.5 10.1 163.6"
+        rotation="0 90 0"
+        color="#ffffff"
+        width="50"
+        height="20"
+        depth="15"
+        src="#yellow"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#yellow"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
+
+    <!--Container Yellow 4-->
+    <a-box position="-221 10.1 288"
+        rotation="0 0 0"
+        color="#ffffff"
+        width="50"
+        height="20"
+        depth="15"
+        src="#yellow"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#yellow"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
+
+    <!--Container Yellow 5-->
+    <a-box position="-90.7 10.1 11.1"
+        rotation="0 -42 0"
+        color="#ffffff"
+        width="50"
+        height="20"
+        depth="15"
+        src="#yellow"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#yellow"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
+
+    <!--Container Yellow 6-->
+    <a-box position="180.9 10.1 -10.8"
+        rotation="0 90 0"
+        color="#ffffff"
+        width="50"
+        height="20"
+        depth="15"
+        src="#yellow"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#yellow"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
+
+    <!--Container Yellow 7-->
+    <a-box position="157.7 10.1 -225.4"
+        rotation="0 90 0"
+        color="#ffffff"
+        width="50"
+        height="20"
+        depth="15"
+        src="#yellow"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#yellow"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
+
+<!--Container Rusty 1-->
+<a-box position="206 10.1 -226"
+    rotation="0 90 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#rusty"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#rusty"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--Container Rusty 2-->
+<a-box position="152.49 10.1 95.299"
+    rotation="0 0 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#rusty"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#rusty"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--Container Rusty 3-->
+<a-box position="-289.49 10.1 -322.40"
+    rotation="0 -55 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#rusty"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#rusty"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--Container Rusty 4-->
+<a-box position="-41.8 10.1 16"
+    rotation="0 0 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#rusty"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#rusty"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--Container Rusty 5-->
+<a-box position="-345.4 10.1 -114.6"
+    rotation="0 -65 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#rusty"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#rusty"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--Container Rusty 6-->
+<a-box position="6.36 10.1 213.6"
+    rotation="0 90 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#rusty"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#rusty"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--Container Rusty 7-->
+<a-box position="-77.8 10.1 -263.4"
+    rotation="0 0 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#rusty"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#rusty"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--Container Rusty 8-->
+<a-box position="-201.73 10.1 35.7"
+    rotation="0 0 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#rusty"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#rusty"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--white 1-->
+<a-box position="-243.93 10.1 -299"
+    rotation="0 0 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#white"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#white"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--white 2-->
+<a-box position="-52.003 10.1 -43.127"
+    rotation="0 0 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#white"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#white"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--white 3-->
+<a-box position="236.73 10.1 -213.39"
+    rotation="0 45 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#white"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#white"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--white 4-->
+<a-box position="-234.87 10.1 40.330"
+    rotation="0 90 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#white"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#white"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--white 5-->
+<a-box position="-23.96 10.1 246.27"
+    rotation="0 0 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#white"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#white"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--white 6-->
+<a-box position="-45 10.1 -267.5"
+    rotation="0 90 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#white"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#white"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--white 7-->
+<a-box position="-15.2 10.1 -134.7"
+    rotation="0 0 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#white"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#white"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--white 8-->
+<a-box position="-279.8 10.1 232.4"
+    rotation="0 45 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#white"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#white"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+
+<!--damaged 1-->
+<a-box position="-300.312 10.1 -247.572"
+    rotation="0 90 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#damaged"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#damaged"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--damaged 2-->
+<a-box position="-300.13 10.1 -247.518"
+    rotation="0 90 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#damaged"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#damaged"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--damaged 3-->
+<a-box position="-176.12 10.1 68.473"
+    rotation="0 90 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#damaged"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#damaged"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--damaged 4-->
+<a-box position="185.03 10.1 213.10"
+    rotation="0 90 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#damaged"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#damaged"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--damaged 5-->
+<a-box position="-56.8 10.1 255.5"
+    rotation="0 90 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#damaged"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#damaged"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--damaged 6-->
+<a-box position="17.4 10.1 -152.15"
+    rotation="0 90 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#damaged"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#damaged"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--damaged 7-->
+<a-box position="204.2 10.1 -174.3"
+    rotation="0 80 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#damaged"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#damaged"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--damaged 8-->
+<a-box position="-249.4 10.1 79.4"
+    rotation="0 15 0"
+    color="#ffffff"
+    width="50"
+    height="20"
+    depth="15"
+    src="#damaged"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#damaged"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+
+<!--pile 1-->
+<a-box position="167.60 20.1 245.83"
+        rotation="0 0 0"
+        color="#ffffff"
+        width="50"
+        height="40"
+        depth="15"
+        src="#pile"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#pile"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
+
+<!--pile 2-->
+<a-box position="98.091 20.1 7.027"
+        rotation="0 0 0"
+        color="#ffffff"
+        width="50"
+        height="40"
+        depth="15"
+        src="#pile"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#pile"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
+
+<!--pile 3-->
+<a-box position="-193.8 20.1 -298.98"
+        rotation="0 0 0"
+        color="#ffffff"
+        width="50"
+        height="40"
+        depth="15"
+        src="#pile"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#pile"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
+
+<!--pile 4-->
+<a-box position="41.038 20.1 33.691"
+        rotation="0 90 0"
+        color="#ffffff"
+        width="50"
+        height="40"
+        depth="15"
+        src="#pile"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#pile"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
+
+<!--pile 5-->
+<a-box position="216.2 20.1 -304"
+        rotation="0 0 0"
+        color="#ffffff"
+        width="50"
+        height="40"
+        depth="15"
+        src="#pile"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#pile"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
+
+<!--pile 6-->
+<a-box position="232.6 20.1 -369.5"
+        rotation="0 -40 0"
+        color="#ffffff"
+        width="50"
+        height="40"
+        depth="15"
+        src="#pile"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#pile"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
+
+<!--pile 7-->
+<a-box position="16.9 20.1 -202.3"
+        rotation="0 90 0"
+        color="#ffffff"
+        width="50"
+        height="40"
+        depth="15"
+        src="#pile"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#pile"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
+
+<!--pile 8-->
+<a-box position="-241.8 20.1 220.95"
+        rotation="0 -40 0"
+        color="#ffffff"
+        width="50"
+        height="40"
+        depth="15"
+        src="#pile"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#pile"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
+
+    <!--pile 9-->
+<a-box position="312.9 20.1 273.6"
+    rotation="0 -40 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#pile"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#pile"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--pile 10-->
+<a-box position="90.1 20.1 364.9"
+        rotation="0 -40 0"
+        color="#ffffff"
+        width="50"
+        height="40"
+        depth="15"
+        src="#pile"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#pile"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
+
+    <!--pile 11-->
+<a-box position="-299.6 20.1 68.5"
+    rotation="0 -40 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#pile"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#pile"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--pile 12-->
+<a-box position="230.2 20.1 48.5"
+    rotation="0 -90 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#pile"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#pile"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--pile 13-->
+<a-box position="-167.2 20.1 -141.5"
+    rotation="0 -40 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#pile"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#pile"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--pile 14-->
+<a-box position="-68.8 20.1 150"
+    rotation="0 -40 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#pile"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#pile"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--pile 15-->
+<a-box position="-27.8 20.1 -300.8"
+    rotation="0 0 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#pile"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#pile"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<!--pile 16-->
+<a-box position="-322.2 20.1 -350.4"
+    rotation="0 45 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#pile"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#pile"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+<a-box position="100.8 20.1 334.8"
+        rotation="0 0 0"
+        color="#ffffff"
+        width="50"
+        height="40"
+        depth="15"
+        src="#wall"
+        roughness="0.1"
+        repeat="1 1"
+        normal-map="#wall"
+        normal-scale="1 -1"
+        side="double"
+        metalness="0.5">
+    </a-box>
+
+    <a-box position="-149.5 20.1 -107.4"
+    rotation="0 0 0"
+    color="#ffffff"
+    width="50"
+    height="40"
+    depth="15"
+    src="#wall"
+    roughness="0.1"
+    repeat="1 1"
+    normal-map="#wall"
+    normal-scale="1 -1"
+    side="double"
+    metalness="0.5">
+</a-box>
+
+</a-scene>
 </body>
 </html>
